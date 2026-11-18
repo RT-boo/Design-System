@@ -23,13 +23,13 @@ fs.mkdirSync(path.dirname(output), { recursive: true });
 
 const pptx = new PptxGenJS();
 pptx.layout = "LAYOUT_WIDE";
-pptx.author = deck.meta.author || "Robo Co-op";
-pptx.company = "Robo Co-op";
+pptx.author = deck.meta.author || "Korn Ferry";
+pptx.company = "Korn Ferry";
 pptx.subject = deck.meta.subject || deck.meta.title;
 pptx.title = deck.meta.title;
 pptx.lang = deck.meta.language === "ja" ? "ja-JP" : "en-US";
 pptx.theme = {
-  headFontFace: deck.meta.language === "ja" ? "Noto Sans JP" : "Roboto",
+  headFontFace: deck.meta.language === "ja" ? "Yu Gothic" : "Arial",
   bodyFontFace: deck.meta.language === "ja" ? "Noto Sans JP" : "Roboto",
   lang: pptx.lang
 };
