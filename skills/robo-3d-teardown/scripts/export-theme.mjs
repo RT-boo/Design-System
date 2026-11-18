@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Portable theme bridge for Robo-branded Three.js stages and HTML HUDs.
+/** Portable theme bridge for Korn Ferry-themed Three.js stages and HTML HUDs.
  * Reads only the resolved token export produced by `npm run tokens`.
  * No third-party runtime and no modification of existing brand tokens.
  */
@@ -8,7 +8,7 @@ import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 function options(args) {
-  const opts = { brand: 'robo-lab', theme: 'light' };
+  const opts = { brand: 'korn-ferry', theme: 'light' };
   for (let i = 0; i < args.length; i++) {
     const key = args[i];
     if (!['--brand', '--theme', '--tokens', '--out'].includes(key) || !args[i + 1]) {
@@ -35,7 +35,7 @@ function findTokens(filePath) {
     if (parent === current) break;
     current = parent;
   }
-  throw new Error('Resolved dist/tokens.json missing. Run npm run tokens in Robo Design System or pass --tokens /path/to/dist/tokens.json.');
+  throw new Error('Resolved dist/tokens.json missing. Run npm run tokens in KF Design System or pass --tokens /path/to/dist/tokens.json.');
 }
 
 export function create3DTheme(resolvedTokens, brand, theme) {
