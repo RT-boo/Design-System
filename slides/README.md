@@ -1,39 +1,16 @@
-# Presentation Layer
+# Presentation Layer — Korn Ferry Style
 
-The presentation layer converts the Robo Design System into a repeatable, brand-aware slide-generation system.
+The original Presentation OS remains intact: 7 semantic editable PowerPoint renderers, 48 composition archetypes, 7 intents, generated agent rules and structural/visual QA.
 
 ## Workflow
 
-1. Define audience, decision, evidence, and output.
-2. Choose the correct Robo brand.
-3. Write one conclusion-oriented title per slide.
-4. Choose a semantic layout from the slide's question.
-5. Choose that brand's Core or Expressive variant.
-6. Generate editable PPTX.
-7. Render and run structural + visual QA.
+1. Establish audience, decision, source material and intended output.
+2. Draft the headline list before slide design; the titles alone must tell the story.
+3. Choose semantic layout based on the slide question.
+4. Use `korn-ferry` with `kf-core` (white consulting content) or `kf-cover` (dark forest).
+5. Add one bottom takeaway, ideally no more than two lines; cite numerical claims and assumptions.
+6. Render the editable PPTX, inspect visuals and run QA.
 
-## Brand is not a skin
+The renderer and underlying source JSON have not been removed. See `../contracts/` and `../generator/`.
 
-Robo Co-op, Robo Lab, Co-op Lab, and Robo University have different visual grammar, not only different colors.
-
-See `../contracts/brands.json` and `../visual-systems/`.
-
-## Storyline rule
-
-Titles should express the conclusion rather than only naming a topic. Reading the slide titles alone should reveal the deck's argument.
-
-## Layouts
-
-See `layouts/catalog.md`.
-
-Layouts are semantic structures shared across brands. The brand variant changes notation, motif, panel treatment, and visual emphasis while preserving the information structure.
-
-## Robo Lab technical language
-
-See `components/tech.md`.
-
-Robo Lab Core is the normal system/AI mode. Robo Lab Cyber is the more expressive option: a measured cyberpunk treatment with grids, traces, corner brackets, and high-contrast system notation.
-
-## Taste
-
-Taste axes remain useful for authoring, but the canonical output is a brand-owned variant from `../contracts/variants.json`.
+Visual identity here is an approximation grounded in publicly available brand material and user-supplied writing instructions. The official corporate master and logo are not provided.
