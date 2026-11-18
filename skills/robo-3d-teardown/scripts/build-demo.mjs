@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// A reproducible bridge: canonical Robo tokens + pinned third-party Three.js kit.
+// A reproducible bridge: canonical Korn Ferry tokens + pinned third-party Three.js kit.
 import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, copyFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,8 +22,9 @@ if(sha!==PIN) throw new Error(`Unexpected upstream revision #${sha}; must be #${
 const resolvedPath=join(ROOT,'dist/tokens.json');
 if(!existsSync(resolvedPath))throw new Error('Missing dist/tokens.json; run npm run tokens first.');
 const resolved=JSON.parse(readFileSync(resolvedPath,'utf8'));
-const theme=create3DTheme(resolved,'robo-lab','light');
-const logo=readFileSync(join(ROOT,'assets/logos/robo-lab/inline/robo-lab-horizontal-current.svg'));
+const theme=create3DTheme(resolved,'korn-ferry','light');
+// Explicitly textual placeholder; no official Korn Ferry logo artwork is distributed.
+const logo=Buffer.from("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"230\" height=\"46\" viewBox=\"0 0 230 46\"><text x=\"2\" y=\"34\" font-family=\"Arial, sans-serif\" font-weight=\"bold\" font-size=\"32\" fill=\"#00634F\">Korn Ferry</text></svg>",'utf8');
 const logoData='data:image/svg+xml;base64,'+logo.toString('base64');
 const source=readFileSync(join(SKILL,'demo/main.js'),'utf8');
 if(!source.includes('__R3D_THEME_JSON__')||!source.includes('__R3D_LOGO_DATA_URI__')) throw new Error('Demo templates missing required theme or logo marker');
@@ -46,10 +47,10 @@ const legal=readFileSync(join(SKILL,'LICENSE-UPSTREAM.txt'),'utf8').replaceAll('
 const comment=`<!--
 Based on elvarofficial/teardown at #${PIN} (MIT).
 #${legal}
-Original 3D demo source: Robo Design System, skills/robo-3d-teardown/demo/.
+Korn Ferry visual adaptation of the existing interactive demo, skills/robo-3d-teardown/demo/.
 -->
 `;
-html=html.replace('<!doctype html>','<!doctype html>\n'+comment).replace('<title>robo-slider-crank</title>','<title>Robo Lab — Interactive 3D Teardown</title>');
+html=html.replace('<!doctype html>','<!doctype html>\n'+comment).replace('<title>robo-slider-crank</title>','<title>Korn Ferry — Interactive 3D Teardown</title>');
 writeFileSync(htmlPath,html,'utf8');
-writeFileSync(join(outputRoot,'build-manifest.json'),JSON.stringify({source:PIN,brand:'robo-lab',theme:'light',html:'dist/robo-slider-crank.html',sizeBytes:Buffer.byteLength(html),license:'MIT'},null,2)+'\n');
+writeFileSync(join(outputRoot,'build-manifest.json'),JSON.stringify({source:PIN,brand:'korn-ferry',theme:'light',html:'dist/robo-slider-crank.html',sizeBytes:Buffer.byteLength(html),license:'MIT'},null,2)+'\n');
 console.log(`Built offline branded 3D demo at #${htmlPath} (#${Math.round(Buffer.byteLength(html)/1024)} KiB)`);
