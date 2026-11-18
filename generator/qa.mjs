@@ -33,7 +33,7 @@ export function validateDeck(deck){
    }
    if(s.footMessage!==undefined){
       if(typeof s.footMessage!=="string")errors.push("Slide "+id+": footMessage must be a string");
-      else if(s.footMessage.split("\\n").length>2||s.footMessage.length>90)errors.push("Slide "+id+": footMessage must fit two lines");
+      else if(s.footMessage.split(/\r?\n/).length>2||s.footMessage.length>90)errors.push("Slide "+id+": footMessage must fit two lines");
    }else if(contentSlide(s))warnings.push("Slide "+id+": no footMessage");
    if(s.type==="comparison"&&(!Array.isArray(s.columns)||s.columns.length!==2)) errors.push("Slide "+id+": comparison requires exactly two columns");
    if(s.type==="matrix"&&(!Array.isArray(s.rows)||s.rows.length!==3||!Array.isArray(s.columns)||s.columns.length!==3||!Array.isArray(s.cells)||s.cells.length!==3||!s.cells.every(row=>Array.isArray(row)&&row.length===3)))errors.push("Slide "+id+": matrix requires 3x3 cells and row/column labels");
@@ -46,4 +46,4 @@ export function validateDeck(deck){
  });
  return {errors,warnings};
 }
-export const formatQa=r=>[...r.errors.map(e=>"FAIL "+e),...r.warnings.map(e=>"WARN "+e),r.errors.length?"FAIL "+r.errors.length+" errors":"PASS "+r.warnings.length+" warnings"].join("\\n");
+export const formatQa=r=>[...r.errors.map(e=>"FAIL "+e),...r.warnings.map(e=>"WARN "+e),r.errors.length?"FAIL "+r.errors.length+" errors":"PASS "+r.warnings.length+" warnings"].join("\n");
