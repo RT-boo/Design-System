@@ -42,7 +42,7 @@ try{
     assert.equal(status.webgl,true,'WebGL context must exist');
     assert.ok(status.canvasWidth>100&&status.canvasHeight>100,'Canvas has visible dimensions');
     assert.ok(status.dataUriLength>5000,'Canvas should contain rendered pixels');
-    assert.equal(status.theme.brand,'robo-lab');
+    assert.equal(status.theme.brand,'korn-ferry');
     assert.equal(status.theme.theme,'light');
     assert.ok(status.bodyOverflow<3,'No unintended horizontal overflow');
     assert.equal(errors.length,0,'No page errors on initial render');
