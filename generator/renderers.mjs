@@ -77,16 +77,21 @@ export function matrix(ctx){const{slide,spec,theme,pptx}=ctx;base(ctx);
  });
  });}
 export function groupTable(ctx){const{slide,spec,theme,pptx}=ctx;base(ctx);
- const cols=Math.min((spec.headers||[]).length,5),width=11.9/cols,rowH=0.53;
- spec.headers.slice(0,cols).forEach((h,j)=>{
- const x=0.72+j*width;rect(pptx,slide,x,2.03,width-0.04,0.5,theme.colors.forest);
- txt(slide,h,x+0.1,2.16,width-0.21,0.3,ctx,{fontSize:12,bold:true,color:theme.colors.white});
+ const headers=(spec.headers||[]).slice(0,5);
+ const rows=(spec.rows||[]).slice(0,7);
+ const cols=headers.length,width=11.9/cols;
+ const rowH=Math.min(1.05,3.8/Math.max(1,rows.length));
+ headers.forEach((h,j)=>{
+   const x=0.72+j*width;
+   rect(pptx,slide,x,2.03,width-0.04,0.52,theme.colors.forest);
+   txt(slide,h,x+0.12,2.145,width-0.25,0.32,ctx,{fontSize:12,bold:true,color:theme.colors.white});
  });
- (spec.rows||[]).slice(0,7).forEach((row,i)=>row.slice(0,cols).forEach((v,j)=>{
- const x=0.72+j*width,y=2.58+i*rowH;
- panel(pptx,slide,theme,x,y,width-0.04,rowH-0.035,i%2===0);
- txt(slide,v,x+0.12,y+0.095,width-0.24,0.37,ctx,{fontSize:11.2});
- }));}
+ rows.forEach((row,i)=>row.slice(0,cols).forEach((v,j)=>{
+   const x=0.72+j*width,y=2.63+i*rowH;
+   panel(pptx,slide,theme,x,y,width-0.04,rowH-0.07,i%2===0);
+   txt(slide,v,x+0.12,y+0.12,width-0.24,rowH-0.3,ctx,{fontSize:12,bold:j===0,color:j===0?theme.colors.forest:theme.colors.text,valign:"mid"});
+ }));
+}
 export function schedule(ctx){const{slide,spec,theme,pptx}=ctx;base(ctx);
  const periods=(spec.periods||[]).slice(0,8),ws=(spec.workstreams||[]).slice(0,6),unit=9.4/Math.max(1,periods.length);
  periods.forEach((p,j)=>txt(slide,p,3.08+j*unit,2.12,unit-0.05,0.4,ctx,{fontSize:12,bold:true,color:theme.colors.forest,align:"center"}));
@@ -129,8 +134,11 @@ export function appendix(ctx){const{pptx,slide,spec,theme}=ctx;base(ctx);
 export function reference(ctx){const{slide,spec}=ctx;base(ctx);list(slide,spec.notes||[],0.86,2.2,11.2,ctx,{fontSize:13,step:0.57,max:7});}
 export function statement(ctx){const{slide,spec,theme,pptx}=ctx;base(ctx);
  panel(pptx,slide,theme,0.74,2.05,8.2,3.88,true);
- txt(slide,spec.body,1.09,2.55,7.45,2.85,ctx,{fontSize:22,bold:true,color:theme.colors.darkForest});
- if(spec.proof)txt(slide,spec.proof,9.18,2.66,3.16,2.4,ctx,{fontSize:14,color:theme.colors.text});
+ txt(slide,spec.body,1.09,2.55,7.45,2.85,ctx,{fontSize:21,bold:true,color:theme.colors.darkForest});
+ if(spec.proofTitle){
+   txt(slide,spec.proofTitle,9.18,2.49,3.16,0.66,ctx,{fontSize:25,bold:true,fontFace:"Arial",color:theme.colors.forest});
+   txt(slide,spec.proof||"",9.18,3.36,3.16,1.74,ctx,{fontSize:13.2,color:theme.colors.text});
+ }else if(spec.proof)txt(slide,spec.proof,9.18,2.66,3.16,2.4,ctx,{fontSize:14,color:theme.colors.text});
 }
 export function metrics(ctx){const{slide,spec,theme,pptx}=ctx;base(ctx);
  const ms=(spec.metrics||[]).slice(0,4),width=11.9/ms.length;
