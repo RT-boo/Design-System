@@ -20,16 +20,16 @@ if (!existsSync(tokensPath)) {
 }
 
 const banner = `/*!
- * Robo Co-op Design System
- * Tokens, base layer and components for Robo Co-op, Robo Lab, Co-op Lab and
- * Robo University.
+ * Korn Ferry Style Design System
+ * Tokens, base layer and components for Korn Ferry-themed slides, web UI and
+ * interactive 3D UI.
  *
  * GENERATED FILE — do not edit. Sources live in tokens/ and src/css/.
  * Rebuild with: npm run build
  *
  * Usage:
- *   <html data-brand="robo-lab">                  light, follows OS for dark
- *   <html data-brand="coop-lab" data-theme="dark"> forced dark
+ *   <html data-brand="korn-ferry">                  light, follows OS for dark
+ *   <html data-brand="korn-ferry" data-theme="dark"> forced dark
  */
 `;
 
@@ -42,6 +42,8 @@ parts.push(readFileSync(join(SRC, 'utilities.css'), 'utf8'));
 
 mkdirSync(join(ROOT, 'dist', 'css'), { recursive: true });
 const out = parts.join('\n');
+writeFileSync(join(ROOT, 'dist', 'css', 'kf-design-system.css'), out, 'utf8');
+// Retain the legacy CSS output path for clients that have not migrated their imports.
 writeFileSync(join(ROOT, 'dist', 'css', 'robo-design-system.css'), out, 'utf8');
 
 /* Shipped alongside, never inside. An @import has to be the first rule in a
@@ -50,6 +52,6 @@ writeFileSync(join(ROOT, 'dist', 'css', 'robo-design-system.css'), out, 'utf8');
 copyFileSync(join(SRC, 'fonts.css'), join(ROOT, 'dist', 'css', 'fonts.css'));
 
 const kb = (Buffer.byteLength(out, 'utf8') / 1024).toFixed(1);
-console.log(`Bundled tokens + base + ${componentFiles.length} components + utilities -> dist/css/robo-design-system.css (${kb} KB)`);
+console.log(`Bundled tokens + base + ${componentFiles.length} components + utilities -> dist/css/kf-design-system.css (${kb} KB)`);
 console.log(`  components: ${componentFiles.map((f) => basename(f, '.css')).join(', ')}`);
 console.log('  fonts:      dist/css/fonts.css (optional, link separately)');

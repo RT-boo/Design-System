@@ -1,17 +1,17 @@
 {
   "meta": {
-    "title": "Robo AI Demo",
-    "subtitle": "From fragmented AI tools to an operational delivery system",
-    "brand": "robo-lab",
-    "preset": "robo-lab-core",
-    "author": "Robo Co-op",
+    "title": "Korn Ferry — Operating Model",
+    "subtitle": "An illustrative client consultation framework",
+    "brand": "korn-ferry",
+    "preset": "kf-core",
+    "author": "Korn Ferry",
     "language": "en"
   },
   "slides": [
     {
       "type": "cover",
-      "title": "Robo AI Demo",
-      "subtitle": "From fragmented AI tools to an operational delivery system",
+      "title": "Korn Ferry — Operating Model",
+      "subtitle": "Illustrative consulting presentation",
       "section": "OPEN"
     },
     {
@@ -19,7 +19,8 @@
       "title": "The bottleneck is no longer access to AI — it is orchestration across real work",
       "section": "WHY",
       "body": "Teams already have multiple AI tools. The operational gap appears when those tools must coordinate with people, data, approvals, and existing systems.",
-      "proof": "Design the workflow first. Choose models and agents as interchangeable execution components."
+      "proof": "Design the workflow first. Choose models and agents as interchangeable execution components.",
+      "footMessage": "Build a shared view of the challenge before selecting interventions."
     },
     {
       "type": "metrics",
@@ -41,11 +42,12 @@
           "value": "Reusable",
           "note": "Turn one-off prompting into a repeatable workflow."
         }
-      ]
+      ],
+      "footMessage": "Assess success across the delivery model, not just implementation speed."
     },
     {
       "type": "architecture",
-      "title": "Robo Lab connects people, AI agents, business systems, and evidence in one flow",
+      "title": "Korn Ferry connects people, AI agents, business systems, and evidence in one flow",
       "section": "SYSTEM",
       "layers": [
         {
@@ -58,7 +60,7 @@
         {
           "title": "ORCHESTRATION",
           "nodes": [
-            "Robo workflow",
+            "Consulting workflow",
             "Rules + routing"
           ]
         },
@@ -76,7 +78,8 @@
             "Output / Audit"
           ]
         }
-      ]
+      ],
+      "footMessage": "Define the roles, decisions and controls needed to make change sustainable."
     },
     {
       "type": "demo",
@@ -110,7 +113,8 @@
           "> human review requested",
           "> output ready"
         ]
-      }
+      },
+      "footMessage": "Make the decision path and evidence visible."
     },
     {
       "type": "comparison",
@@ -144,7 +148,8 @@
             "Continuous QA"
           ]
         }
-      ]
+      ],
+      "footMessage": "Choose a phased approach before committing to scale."
     },
     {
       "type": "process",
@@ -171,7 +176,8 @@
           "title": "Scale",
           "body": "Standardize what works and integrate it."
         }
-      ]
+      ],
+      "footMessage": "Tie next steps to accountable owners and explicit results."
     }
   ]
 }

@@ -32,8 +32,8 @@ const core = readJson(join(ROOT, 'tokens', 'core.json'));
 
 /**
  * Brand order is data, not filesystem order. Sorted alphabetically the parent
- * brand landed third, behind Co-op Lab; $meta.order puts Robo Co-op first and
- * the three entities behind it. Everything downstream — the CSS, the switcher,
+ * brand order is explicit; KF is first for new work; legacy tokens
+ * remain accessible for existing builds. Everything downstream — the CSS, the switcher,
  * the palettes, the audit — inherits this sequence, so reordering the system
  * is a one-number edit in a token file.
  */
@@ -192,11 +192,11 @@ const lines = [];
 const say = (s = '') => lines.push(s);
 
 say('/*');
-say(' * Robo Co-op Design System — design tokens');
+say(' * Korn Ferry-inspired Design System — design tokens');
 say(' * GENERATED FILE. Edit tokens/*.json and run `npm run build`.');
 say(' *');
-say(' * Usage:  <html data-brand="robo-lab">            follows the OS theme');
-say(' *         <html data-brand="robo-lab" data-theme="dark">   forced');
+say(' * Usage:  <html data-brand="korn-ferry">            follows the OS theme');
+say(' *         <html data-brand="korn-ferry" data-theme="dark">   forced');
 say(' */');
 say();
 

@@ -1,131 +1,94 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
-
-const ROOT = process.cwd();
-const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
-const layouts = read("contracts/layouts.json");
-const components = read("contracts/components.json");
-const variants = read("contracts/variants.json");
-const brands = read("contracts/brands.json");
-const storytelling = read("contracts/storytelling.json");
-const archetypes = read("contracts/archetypes.json");
-
-function generate() {
-  const lines = [
-    "<!-- GENERATED from contracts/*.json by scripts/build-agents.mjs — do not edit by hand. -->",
-    "# Robo Presentation OS — authoring contract for agents",
-    "",
-    "Create editable Robo presentations from structured deck JSON. Brand identity is part of the content system, not a cosmetic skin.",
-    "",
-    "## Web and application UI — separate design workflow",
-    "For websites, landing pages, dashboards and product interfaces, read `skills/robo-frontend-design/SKILL.md` and its QA checklist before designing or coding. Keep `tokens/core.json`, `tokens/brands/*.json` and `src/css/` authoritative. For a requested Robo Lab light-blue web design, use its existing light semantic theme rather than copying dark presentation variants.",
-    "The slide-specific rules below remain authoritative for editable PPTX decks; do not apply slide layouts as a generic web UI template.",
-    "",
-    "## Core rules",
-    ...layouts.rules.map((r,i)=>`${i+1}. ${r}`),
-    "",
-    "## Story-first workflow",
-    ...storytelling.workflow.map((s,i)=>`${i+1}. **${s.label}** — ${s.rule}`),
-    "",
-    "### Headline rules",
-    ...storytelling.headline.rules.map(r=>`- ${r}`),
-    "",
-    "### Storyline rules",
-    ...storytelling.storyline.rules.map(r=>`- ${r}`),
-    "",
-    "### Evidence rules",
-    ...storytelling.evidence.rules.map(r=>`- ${r}`),
-    "",
-    "## Slide intents",
-    "| Intent | Question | Default semantic layouts |",
-    "|---|---|---|",
-    ...archetypes.intents.map(i=>`| \`${i.id}\` | ${i.question} | ${i.defaultSemanticLayouts.map(x=>`\`${x}\``).join(", ")} |`),
-    "",
-    "## Archetype registry",
-    "Archetypes guide reasoning and composition. They do not replace the renderer contract: `slide.type` remains one of the supported semantic layouts.",
-    "",
-    "| ID | Intent | Archetype | Renderer hints |",
-    "|---|---|---|---|",
-    ...archetypes.archetypes.map(a=>`| \`${a.id}\` | \`${a.intent}\` | ${a.label} | ${a.rendererHints.map(x=>`\`${x}\``).join(", ")} |`),
-    "",
-    "## Brand selection",
-    "| Brand | Essence | Tension | Signature motif |",
-    "|---|---|---|---|",
-    ...brands.brands.map(b=>`| \`${b.id}\` | ${b.essence} | ${b.tension} | \`${b.motif}\` |`),
-    "",
-    "A deck's `meta.brand` must match the selected variant's brand. Do not use one brand's visual grammar as a generic skin for another brand.",
-    "",
-    "## Workflow for generation",
-    "1. Define audience, decision, evidence, and output.",
-    "2. Choose the correct Robo brand from deck ownership and purpose.",
-    "3. Write the governing claim and headline ledger before drawing.",
-    "4. For each slide, choose intent → archetype → semantic layout, in that order.",
-    "5. Fill only the fields supported by the selected semantic layout.",
-    "6. Choose that brand's Core or Expressive variant deliberately.",
-    "7. Run structural QA before PPTX generation.",
-    "8. Render PPTX to PDF/PNG and run visual grading before delivery.",
-    "",
-    "## Brand-owned variants",
-    "| Variant | Brand | Mode | Scheme | Best fit |",
-    "|---|---|---|---|---|",
-    ...variants.variants.map(v=>`| \`${v.id}\` | \`${v.brand}\` | ${v.mode} | ${v.scheme} | ${v.fit} |`),
-    "",
-    "## Brand grammar",
-    ...brands.brands.flatMap(b=>[
-      `### ${b.name}`,
-      `**Tagline:** ${b.tagline}`,
-      `**Essence:** ${b.essence}`,
-      `**Use:** ${b.signature.join(", ")}.`,
-      `**Principles:** ${b.principles.join(" ")}`,
-      `**Avoid:** ${b.avoid.join(", ")}.`,
-      ""
-    ]),
-    "## Layouts",
-    "| Layout | Question | Best for | Required fields |",
-    "|---|---|---|---|",
-    ...layouts.layouts.map(l=>{
-      const req=Object.entries(l.fields).filter(([,v])=>v.required).map(([k])=>k).join(", ");
-      return `| \`${l.id}\` | ${l.answers} | ${l.bestFor.join("; ")} | ${req} |`;
-    }),
-    "",
-    "## Components",
-    "| Component | Purpose | Constraints |",
-    "|---|---|---|",
-    ...components.components.map(c=>`| \`${c.id}\` | ${c.purpose} | ${c.constraints.join(" ")} |`),
-    "",
-    "## Non-negotiable QA",
-    "- A PPTX that opens is not automatically a good deck.",
-    "- Fail on missing required fields, unsupported layouts, or brand/variant mismatch.",
-    "- When intent/archetype metadata is present, validate it against the archetype registry.",
-    "- Warn on generic titles, duplicate titles, excess density, repeated layout monotony, and deprecated aliases.",
-    "- Verify the headline ledger as an argument, not just slide-by-slide correctness.",
-    "- Render every active layout × variant combination to PNG in CI.",
-    "- Fail visual grading on broken dimensions, near-blank renders, missing expected slides, or regression drift beyond the accepted threshold.",
-    "- Keep evidence metadata truthful and explicit.",
-    "",
-    "## Commands",
-    "```bash",
-    "npm run slides:contracts:check",
-    "npm run slides:qa",
-    "npm run slides:gallery",
-    "npm run slides:visual",
-    "```",
-    ""
-  ];
-  return lines.join("\n");
-}
-
-const output = generate();
-const target = path.join(ROOT, "AGENTS.md");
-if (process.argv.includes("--check")) {
-  const current = fs.existsSync(target) ? fs.readFileSync(target, "utf8") : "";
-  if (current !== output) {
-    console.error("AGENTS.md is out of date. Run: node scripts/build-agents.mjs");
+const ROOT=process.cwd();
+const names=["layouts","components","variants","brands","storytelling","archetypes"];
+const d=Object.fromEntries(names.map(name=>[name,JSON.parse(fs.readFileSync(path.join(ROOT,"contracts",name+".json"),"utf8"))]));
+const createAgent=function createAgent(d){
+ const {layouts,components,variants,brands,storytelling,archetypes}=d;
+ const b=brands.brands[0];
+ const lines=[
+ "<!-- GENERATED from contracts/*.json by scripts/build-agents.mjs — do not edit by hand. -->",
+ "# Korn Ferry Presentation OS — agent authoring contract",
+ "",
+ "The active brand is Korn Ferry. The existing editable PowerPoint, web UI and interactive 3D mechanisms are preserved. This is a public-source approximation, not an official internal KF template.",
+ "",
+ "## KF brand presentation standards",
+ "- PowerPoint 16:9. Forest Green #00634F and Dark Forest Green #053328, white content backgrounds, Arial for Latin characters, and a Japanese system-font fallback.",
+ "- Write the headline list first. A slide title must express the conclusion and be supported by its evidence.",
+ "- One bottom takeaway band per content slide, no more than two lines; sources and assumptions must be visibly distinguished.",
+ "- Footer convention: page number and copyright at lower left, Korn Ferry text-only marker at lower right. Do not fake the official logo.",
+ "- No invented client data, results, quotes, sources, or internal brand assets. Use only authorized content.",
+ "",
+ "## Workflow",
+ ...storytelling.workflow.map((x,i)=>`${i+1}. **${x.label}** — ${x.rule}`),
+ "",
+ "## Story-first headlines",
+ ...storytelling.headline.rules.map(x=>"- "+x),
+ "",
+ "## Storyline",
+ ...storytelling.storyline.rules.map(x=>"- "+x),
+ "",
+ "## Evidence",
+ ...storytelling.evidence.rules.map(x=>"- "+x),
+ "",
+ "## Brand identity",
+ `- Name: ${b.name}`,
+ `- Essence: ${b.essence}`,
+ `- Motif: ${b.motif}`,
+ ...b.principles.map(x=>"- "+x),
+ "",
+ "## Variants",
+ "| ID | Scheme | Use |",
+ "|---|---|---|",
+ ...variants.variants.map(v=>`| \`${v.id}\` | ${v.scheme} | ${v.fit} |`),
+ "",
+ "## 7 semantic renderer layouts",
+ "| ID | Question | Required fields |",
+ "|---|---|---|",
+ ...layouts.layouts.map(x=>`| \`${x.id}\` | ${x.answers} | ${Object.entries(x.fields).filter(([,v])=>v.required).map(([k])=>k).join(", ")} |`),
+ "",
+ "## Communication intents",
+ "| ID | Question |",
+ "|---|---|",
+ ...archetypes.intents.map(x=>`| \`${x.id}\` | ${x.question} |`),
+ "",
+ "## 48 composition archetypes",
+ "Archetypes are planning guides; use an existing semantic renderer for each slide.",
+ "| ID | Intent | Name | Render hints |",
+ "|---|---|---|---|",
+ ...archetypes.archetypes.map(x=>`| \`${x.id}\` | \`${x.intent}\` | ${x.label} | ${x.rendererHints.join(", ")} |`),
+ "",
+ "## Reusable components",
+ ...components.components.map(x=>`- \`${x.id}\`: ${x.purpose}`),
+ "",
+ "## Web / 3D",
+ "- For app interfaces, use `data-brand=\"korn-ferry\"` in the existing token-driven CSS engine. The path `skills/robo-frontend-design/` is retained for compatibility.",
+ "- For 3D demos, run `npm run 3d:test`; the existing Three.js/teardown workflow and mechanics are preserved. The path `skills/robo-3d-teardown/` is retained for compatibility.",
+ "- Original company logos in historical assets must not appear in new KF-facing outputs.",
+ "",
+ "## QA commands",
+ "```bash",
+ "npm run build",
+ "npm run check:contrast",
+ "npm run slides:contracts:check",
+ "npm run slides:qa",
+ "npm run slides:gallery",
+ "npm run 3d:test",
+ "```",
+ ""
+ ];
+ return lines.join("\n")+"\n";
+};
+const output=createAgent(d);
+const file=path.join(ROOT,"AGENTS.md");
+if(process.argv.includes("--check")){
+  if(!fs.existsSync(file)||fs.readFileSync(file,"utf8")!==output){
+    console.error("AGENTS.md out of sync with contracts. Run npm run slides:contracts");
     process.exit(1);
   }
   console.log("AGENTS.md is up to date.");
-} else {
-  fs.writeFileSync(target, output);
+}else{
+  fs.writeFileSync(file,output,"utf8");
   console.log("WROTE AGENTS.md");
 }

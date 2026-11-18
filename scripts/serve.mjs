@@ -58,6 +58,6 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Robo Co-op Design System docs -> http://localhost:${PORT}`);
+  console.log(`Korn Ferry Style Design System docs -> http://localhost:${PORT}`);
   console.log('Ctrl+C to stop.');
 });

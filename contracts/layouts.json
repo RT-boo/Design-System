@@ -1,6 +1,6 @@
 {
   "$meta": {
-    "name": "Robo Presentation Layout Contract",
+    "name": "Korn Ferry Semantic Slide Layout Contract",
     "version": "0.2.0",
     "description": "Machine-readable source of truth for semantic slide layouts. AGENTS.md is generated from contracts."
   },
@@ -11,7 +11,9 @@
     "Reading titles alone should reveal the deck argument.",
     "Do not force content into a preset layout; use the closest semantic layout and simplify or split the slide.",
     "Facts, assumptions, estimates, and recommendations must be distinguishable.",
-    "Never invent sources, screenshots, numbers, quotes, customer names, or system outputs."
+    "Never invent sources, screenshots, numbers, quotes, customer names, or system outputs.",
+    "For KF slides, use a title that states the conclusion; keep any footMessage to one takeaway and at most two lines.",
+    "Use Forest Green / Dark Forest Green as the primary visual system and light-gray takeaway bands."
   ],
   "layouts": [
     {
@@ -33,6 +35,11 @@
         "section": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -45,7 +52,7 @@
       ],
       "example": {
         "type": "cover",
-        "title": "Robo Presentation OS",
+        "title": "Korn Ferry consulting style",
         "subtitle": "A repeatable system for story, design, generation, and QA",
         "section": "OPEN"
       }
@@ -74,6 +81,11 @@
         "source": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -114,6 +126,11 @@
         "source": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -169,6 +186,11 @@
         "source": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -236,6 +258,11 @@
         "source": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -296,6 +323,11 @@
         "source": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -310,7 +342,7 @@
       ],
       "example": {
         "type": "architecture",
-        "title": "Robo connects people, orchestration, AI, and systems in one flow",
+        "title": "The operating model connects people, orchestration, AI, and systems in one flow",
         "section": "ARCHITECTURE",
         "layers": [
           {
@@ -323,7 +355,7 @@
           {
             "title": "ORCHESTRATION",
             "nodes": [
-              "Robo workflow",
+              "Consulting workflow",
               "Rules + routing"
             ]
           },
@@ -368,6 +400,11 @@
         "source": {
           "type": "string",
           "required": false
+        },
+        "footMessage": {
+          "type": "string",
+          "required": false,
+          "maxChars": 100
         }
       },
       "bestFor": [
@@ -402,7 +439,7 @@
           }
         ],
         "screen": {
-          "title": "ROBO_OPERATOR / RUN",
+          "title": "REVIEW / RUN",
           "lines": [
             "$ request accepted",
             "> context loaded",

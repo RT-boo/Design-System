@@ -1,121 +1,34 @@
-# Robo Design System — Presentation OS
+# Korn Ferry Style — Design System
 
-Robo Co-op's design-system source of truth, extended into a machine-readable, testable presentation system.
+A **KF-style rebrand of the original full-featured system**. All the existing capabilities remain: websites and app UI, accessible design tokens, editable PowerPoint generation, 7 semantic slide layouts / 48 composition archetypes, visual QA, interactive 3D demos, mechanical simulations and automated tests.
 
-## Web and app UI — Robo Frontend Design
+**This is based on public Korn Ferry material and a user-supplied consultant style brief, not an official corporate PowerPoint master.** No licensed corporate logo artwork, font files, internal client information or endorsement is included.
 
-For websites, landing pages, dashboards and other product interfaces, use the [Robo Frontend Design skill](skills/robo-frontend-design/SKILL.md). It adapts Anthropic's intentional-design and self-critique method to the four Robo brands **without changing canonical tokens, typography or logos**. The existing Robo Lab light-blue web theme remains available; dark slide variants are not web defaults.
-
-See [skill usage and QA](skills/README.md). The Presentation OS below remains authoritative for editable decks.
-
-## Interactive 3D — Robo 3D Teardown
-
-For **interactive 3D mechanical explainers, exploded views and training simulations**, use [Robo 3D Teardown](skills/robo-3d-teardown/SKILL.md). It adapts the reference-first workflow of [elvarofficial/teardown](https://github.com/elvarofficial/teardown) to Robo's existing light/dark brand tokens and QA. A pinned upstream runtime is fetched only during optional CI/local builds and bundled into an **offline interactive 3D demo**; the third-party source itself is **not vendored**. Use `npm run 3d:build` and `npm run 3d:qa` with an authorized reviewed upstream checkout (see the [demo README](skills/robo-3d-teardown/demo/README.md)). GitHub Actions uploads the HTML and screenshots.
-
-## Story-first Presentation OS
-
-The Presentation OS now separates **reasoning**, **composition**, **rendering**, and **brand expression**.
-
-1. Frame the audience, decision, evidence boundary, and output.
-2. Write the governing claim and a headline ledger before drawing.
-3. Classify each slide into one of 7 communication intents.
-4. Select one of 48 composition archetypes.
-5. Map the archetype to the closest supported semantic layout.
-6. Apply the selected Robo brand grammar.
-7. Run structural QA, render, and visual QA.
-
-The 48 archetypes are a reasoning/composition registry, not 48 hard-coded PPT templates. This preserves flexibility and backward compatibility while making slide choice more deliberate.
-
-## Brand Visual Systems v1
-
-The four Robo brands now have distinct presentation identities:
-
-- **Robo Co-op** — Human ⇄ Machine cooperation, synchronization, governance
-- **Robo Lab** — systems, experiments, traces; optional measured cyberpunk
-- **Co-op Lab** — cooperative entrepreneurship, ownership, constructive rebellion
-- **Robo University** — exploration, learning paths, checkpoints, continuous updating
-
-Each brand has **Core + Expressive** presentation modes.
-
-## Active variants
-
-- `robo-coop-core`
-- `robo-coop-dark`
-- `robo-lab-core`
-- `robo-lab-cyber`
-- `coop-lab-core`
-- `coop-lab-hack`
-- `robo-university-core`
-- `robo-university-explore`
-
-Legacy names remain aliases for compatibility, but new decks should use the brand-owned names.
-
-## Architecture
-
-```
-audience / decision / evidence
-    ↓
-governing claim
-    ↓
-headline ledger / storyline
-    ↓
-7 communication intents
-    ↓
-48 composition archetypes
-    ↓
-7 semantic renderer layouts
-    ↓
-brand-owned variant
-    ↓
-editable PowerPoint
-    ↓
-rendered PNG gallery
-    ↓
-structural + visual QA
-```
-
-Machine-readable sources:
-- `contracts/storytelling.json` — story-first workflow, headline/evidence rules, visual semantics, QA
-- `contracts/archetypes.json` — 7 intents + 48 composition archetypes and renderer hints
-- `contracts/brands.json`
-- `contracts/layouts.json`
-- `contracts/components.json`
-- `contracts/variants.json`
-
-`AGENTS.md` is generated from these contracts.
-
-### Optional slide metadata
-
-Existing deck JSON remains valid. New decks may add:
-
-```json
-{
-  "type": "comparison",
-  "intent": "change",
-  "archetype": "20",
-  "title": "The redesigned flow removes two handoffs without changing ownership"
-}
-```
-
-`intent` and `archetype` are validated when present. `type` remains the rendering contract.
-
-## Visual regression
-
-8 variants × 7 semantic layouts = **56 rendered regression cases**.
-
-See [Brand Visual Systems](visual-systems/README.md).
-
-## Commands
+## Quick start
 
 ```bash
 npm install
-npm run slides:contracts:check
-npm run slides:qa
+npm test
 npm run slides:build:example
 npm run slides:gallery
-npm run slides:visual
+npm run docs
+npm start
 ```
 
-## License
+The editable sample deck is written to `generator/output/kf-example-deck.pptx`. For web UI, use `<html data-brand="korn-ferry" data-theme="light">` or `data-theme="dark"`. The branded stylesheet is `dist/css/kf-design-system.css`; the old CSS file path is also written for compatibility.
 
-Robo Co-op logos, wordmarks, brand colours and related brand assets remain proprietary. Public repository visibility does **not** grant permission to reproduce or redistribute Robo Co-op brand assets outside authorized Robo Co-op use. See `LICENSE`.
+## Interactive 3D is preserved
+
+`npm run 3d:test` checks the mechanism and theme bridge. `npm run 3d:build` and `npm run 3d:qa` require the reviewed pinned external runtime, as before; see `skills/robo-3d-teardown/demo/README.md`. The Three.js scene, model, controls, exploded/cutaway views, accessibility handling and screenshot QA have not been deleted.
+
+## Visual language
+
+- Forest Green `#00634F`, Dark Forest Green `#053328`.
+- White slide bodies, restrained light-green labels and gray takeaway band; pale pink only sparingly.
+- Arial for Latin text and numbers; Yu Gothic system fallback for Japanese.
+- Conclusion-oriented slide headlines, single takeaway per content slide, explicit sources.
+- Text-only “Korn Ferry” brand marker in outputs until authorized logo assets are provided.
+
+The existing source paths and older brand-token files remain internally for backward compatibility, but new docs and examples use KF styling. The original `LICENSE` and repository history continue to apply to the code and historical assets. This does not grant rights to use protected trademarks or redistribute proprietary historical content. Do not commit confidential client data to a public repository.
+
+See [KF brand guidance](BRAND_FOUNDATIONS.md), [skills](skills/README.md) and [sources](KF_SOURCES.md).

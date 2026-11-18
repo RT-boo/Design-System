@@ -1,0 +1,138 @@
+{
+  "$meta": {
+    "slug": "korn-ferry",
+    "order": 0,
+    "name": "Korn Ferry",
+    "tagline": "Consulting presentation and product system",
+    "promise": "Clarity in people and organizational decisions",
+    "descriptor": "Public-source KF style adaptation; not an official corporate template",
+    "role": "Presentation, website, dashboard and 3D interface visual identity.",
+    "pillars": [
+      "Evidence-led recommendations",
+      "Clear, concise communication",
+      "Respectful and usable design"
+    ],
+    "source": "User-provided KF consultant style screenshot + published KF brand references",
+    "onPrimaryPreference": "light"
+  },
+  "palette": {
+    "primary": {
+      "value": "#00634F",
+      "name": "Forest Green"
+    },
+    "dark-forest": {
+      "value": "#053328",
+      "name": "Dark Forest Green"
+    },
+    "light-green": {
+      "value": "#E7F0E4",
+      "name": "Light Green"
+    },
+    "gray-band": {
+      "value": "#F1F2F1",
+      "name": "Gray Message Band"
+    },
+    "pale-pink": {
+      "value": "#F5E7E9",
+      "name": "Optional Pale Pink"
+    },
+    "text-green": {
+      "value": "#17392E",
+      "name": "Deep Text"
+    },
+    "muted-green": {
+      "value": "#41564E",
+      "name": "Muted Text"
+    },
+    "accent-green": {
+      "value": "#54852D",
+      "name": "Secondary Green"
+    },
+    "white": {
+      "value": "#FFFFFF",
+      "name": "White"
+    }
+  },
+  "theme": {
+    "light": {
+      "surface": "#FFFFFF",
+      "surface-raised": "#FFFFFF",
+      "surface-sunken": "{palette.light-green}",
+      "surface-inverse": "{palette.dark-forest}",
+      "text": "{palette.text-green}",
+      "text-muted": "{palette.muted-green}",
+      "text-subtle": "#52685E",
+      "text-inverse": "#FFFFFF",
+      "border": "#A7C2B5",
+      "border-strong": "#526F60",
+      "primary": "{palette.primary}",
+      "primary-hover": "{palette.dark-forest}",
+      "primary-active": "#003D31",
+      "primary-subtle": {
+        "alpha": [
+          "{palette.primary}",
+          0.08
+        ]
+      },
+      "accent": "{palette.accent-green}",
+      "accent-subtle": {
+        "alpha": [
+          "{palette.accent-green}",
+          0.12
+        ]
+      },
+      "success": "#377D53",
+      "warning": "#95631F",
+      "danger": "#B42318",
+      "info": "{palette.primary}",
+      "focus": "{palette.primary}",
+      "overlay": {
+        "alpha": [
+          "{palette.dark-forest}",
+          0.55
+        ]
+      },
+      "shadow-rgb": "{palette.dark-forest}"
+    },
+    "dark": {
+      "surface": "{palette.dark-forest}",
+      "surface-raised": "#154B3D",
+      "surface-sunken": "#03261F",
+      "surface-inverse": "#FFFFFF",
+      "text": "#FFFFFF",
+      "text-muted": "#D4E7DD",
+      "text-subtle": "#BACEC3",
+      "text-inverse": "{palette.dark-forest}",
+      "border": "#6D9A85",
+      "border-strong": "#B7D8C5",
+      "primary": "#C5E6A0",
+      "primary-hover": "#D9F1BD",
+      "primary-active": "#9AC875",
+      "primary-subtle": {
+        "alpha": [
+          "#C5E6A0",
+          0.14
+        ]
+      },
+      "accent": "#C5E6A0",
+      "accent-subtle": {
+        "alpha": [
+          "#C5E6A0",
+          0.16
+        ]
+      },
+      "success": "#C5E6A0",
+      "warning": "#FFC98B",
+      "danger": "#FC9C92",
+      "info": "#BBDCD0",
+      "focus": "#C5E6A0",
+      "overlay": {
+        "alpha": [
+          "#000000",
+          0.7
+        ]
+      },
+      "shadow-rgb": "#000000"
+    }
+  }
+}
