@@ -1,10 +1,10 @@
 {
   "$meta": {
-    "name": "Robo Story-First Presentation Contract",
+    "name": "KF Story-First Consulting Presentation Contract",
     "version": "1.0.0",
     "description": "Decision-first reasoning and QA rules that sit above semantic layouts and brand styling.",
     "sourceInspiration": "https://note.com/uchita_success/n/na5babdc58b0e",
-    "adaptation": "Robo-specific synthesis. This contract is authoritative for Robo decks; the external source is inspiration, not a dependency."
+    "adaptation": "Korn Ferry-inspired consulting recommendations; public sources plus supplied 2026Jun style directions."
   },
   "workflow": [
     {
@@ -30,7 +30,7 @@
     {
       "id": "render",
       "label": "Apply semantic layout and brand grammar",
-      "rule": "Use the semantic layout as the rendering contract and the selected Robo brand as the visual grammar."
+      "rule": "Use the semantic layout as the rendering contract and the Korn Ferry brand as the visual grammar."
     },
     {
       "id": "qa",
@@ -45,7 +45,8 @@
       "Keep evidence and judgment in the same headline when it remains readable.",
       "Use sentence-pattern variety across adjacent slides.",
       "Do not use the headline to count elements; use it to state what the elements mean.",
-      "Move secondary evidence into the body before weakening the claim."
+      "Move secondary evidence into the body before weakening the claim.",
+      "Draft a complete headline list before composing the PowerPoint."
     ],
     "antiPatterns": [
       "topic-only headings",
@@ -55,7 +56,10 @@
       "invented numbers or unsourced precision"
     ],
     "japaneseGuidance": {
-      "targetChars": [30, 60],
+      "targetChars": [
+        30,
+        60
+      ],
       "firstLineTargetChars": 36,
       "maxLines": 2,
       "advisory": true
@@ -85,7 +89,8 @@
       "Every material number needs a source, a stated calculation basis, or an explicit placeholder.",
       "Facts, assumptions, estimates, recommendations, and decisions must remain distinguishable.",
       "Each major clause in a headline should be supported by a visible body element.",
-      "Do not fabricate screenshots, quotes, system output, customer names, or measured results."
+      "Do not fabricate screenshots, quotes, system output, customer names, or measured results.",
+      "For client deliverables, separate estimated figures, facts, assumptions, options, and decisions."
     ]
   },
   "visualGrammar": {
@@ -109,15 +114,42 @@
     ]
   },
   "chartFallbacks": [
-    {"question": "difference in magnitude", "chart": "bar"},
-    {"question": "change over time", "chart": "line"},
-    {"question": "bridge from start to end", "chart": "waterfall"},
-    {"question": "conversion or loss by stage", "chart": "funnel"},
-    {"question": "product of two quantities", "chart": "area"},
-    {"question": "relationship between two measures", "chart": "scatter"},
-    {"question": "density across two dimensions", "chart": "heatmap"},
-    {"question": "quantity plus composition over time", "chart": "stacked area"},
-    {"question": "flow allocation", "chart": "sankey"}
+    {
+      "question": "difference in magnitude",
+      "chart": "bar"
+    },
+    {
+      "question": "change over time",
+      "chart": "line"
+    },
+    {
+      "question": "bridge from start to end",
+      "chart": "waterfall"
+    },
+    {
+      "question": "conversion or loss by stage",
+      "chart": "funnel"
+    },
+    {
+      "question": "product of two quantities",
+      "chart": "area"
+    },
+    {
+      "question": "relationship between two measures",
+      "chart": "scatter"
+    },
+    {
+      "question": "density across two dimensions",
+      "chart": "heatmap"
+    },
+    {
+      "question": "quantity plus composition over time",
+      "chart": "stacked area"
+    },
+    {
+      "question": "flow allocation",
+      "chart": "sankey"
+    }
   ],
   "qa": {
     "headline": [
