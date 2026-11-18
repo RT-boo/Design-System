@@ -1,25 +1,24 @@
-# Robo design skills
+# Design capabilities — Korn Ferry style
 
-The project-specific skill is [`robo-frontend-design/SKILL.md`](robo-frontend-design/SKILL.md). It brings the design-planning and anti-template critique approach of Anthropic's frontend-design skill into the existing Robo brand-token system.
+The original functionality is retained. **Only the active visual brand is Korn Ferry.** For backwards compatibility, the original skill directory paths remain unchanged.
 
-It is for websites, landing pages, dashboards and product UI. **Do not substitute it for the presentation system.** Decks continue to use root `AGENTS.md`, `contracts/` and `slides/`.
+## Web / frontend design
 
-For compatible coding agents, install or copy the entire `robo-frontend-design` skill folder into that agent's project skills directory, or explicitly tell the agent to read this SKILL.md before designing. Merely storing the skill in GitHub does not ensure every agent automatically loads it.
+Use [frontend design skill](robo-frontend-design/SKILL.md) and `data-brand="korn-ferry"`. The token pipeline supports light and dark themes. Build with `npm run build`, preview with `npm start`, and run contrast checks with `npm run check:contrast`.
 
-Example request:
+## 3D visualizations
 
-> Build a Robo Lab client-facing landing page using our existing **light** theme; read `skills/robo-frontend-design/SKILL.md` and the existing tokens, produce a short design plan first, then implement and inspect mobile/desktop screenshots.
-
-Upstream inspiration: [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (Apache-2.0). This integration is Robo-specific and does not overwrite fonts, logos, existing brand tokens or slide variants.
-
-## Robo 3D Teardown
-
-[`robo-3d-teardown/SKILL.md`](robo-3d-teardown/SKILL.md) covers interactive mechanical explainers with branded HUDs, cutaways and part-state-linked gauges. It uses the resolved **web** brand themes (including Robo Lab **light**) without altering the Presentation OS.
-
-Export a theme after `npm run tokens`:
+Use [interactive 3D teardown skill](robo-3d-teardown/SKILL.md). Orbit, explodes, cutaway, live model state, replay, WebGL and mobile/desktop QA are preserved.
 
 ```bash
-node skills/robo-3d-teardown/scripts/export-theme.mjs --brand robo-lab --theme light
+npm run tokens
+node skills/robo-3d-teardown/scripts/export-theme.mjs --brand korn-ferry --theme light
+npm run 3d:test
+# 3d:build and 3d:qa require the pinned upstream dependency; see demo README.
 ```
 
-The upstream [elvarofficial/teardown](https://github.com/elvarofficial/teardown) generator is third-party MIT code and is **not vendored**. The Robo-developed [interactive demo](robo-3d-teardown/demo/README.md) is built by obtaining an audited and pinned upstream checkout. `npm run 3d:test` checks mechanism math and theme export; `npm run 3d:build` produces single-file HTML; `npm run 3d:qa` tests desktop/mobile Chrome and writes screenshots. See [upstream and security notes](robo-3d-teardown/references/upstream.md).
+## PowerPoint slides
+
+Use `AGENTS.md`, `contracts/` and `generator/`. Editable PowerPoint generation, story-first layouts, archetypes, PDF/PNG rendering and visual checks remain available.
+
+This is a **public-source, KF-inspired** theme; it does not bundle a licensed internal template, official wordmark artwork, or trademark rights.
