@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Korn Ferry | 会社概要",
+    "brand": "korn-ferry",
+    "preset": "kf-core",
+    "language": "ja",
+    "copyrightYear": "2026",
+    "author": "KF Style Test",
+    "date": "2026年11月18日",
+    "projectName": "Korn Ferry会社紹介",
+    "materialType": "公開情報を用いたデザイン検証",
+    "headlineList": [
+      "Korn Ferryは人と組織を起点に企業のパフォーマンス向上を支援する",
+      "3つのソリューショングループが組織変革から採用までを横断して支援する",
+      "FY2026のフィー収入は29.1億ドル、調整後EBITDAマージンは17.1%",
+      "FY2027から3地域を報告セグメントとし、横断的なサービス提供を推進する"
+    ]
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "title": "Korn Ferry | 会社概要",
+      "subtitle": "提供価値・事業領域・業績・運営モデル",
+      "clientName": "",
+      "materialType": "公開情報を用いたデザイン検証",
+      "date": "2026年11月18日"
+    },
+    {
+      "type": "statement",
+      "section": "01 / COMPANY",
+      "title": "Korn Ferryは人と組織を起点に企業のパフォーマンス向上を支援する",
+      "subtitle": "会社概要・提供価値",
+      "body": "戦略や組織設計から、採用・育成・評価・報酬まで。人材と組織を横断して、企業の変革と成果創出を支援するグローバルコンサルティングファーム。",
+      "proof": "人と組織のパフォーマンスを研究・支援。独自のデータ・知見・テクノロジーを活用する。",
+      "footMessage": "経営課題と人材・組織課題を接続することがKorn Ferryの提供価値の中核。",
+      "source": "Korn Ferry公式サイト「About Us」、FY2026 Form 10-K",
+      "proofTitle": "50+ YEARS"
+    },
+    {
+      "type": "group-table",
+      "section": "02 / SOLUTIONS",
+      "title": "3つのソリューショングループが組織変革から採用までを横断して支援する",
+      "subtitle": "2026年5月以降の提供サービス区分",
+      "headers": [
+        "ソリューショングループ",
+        "構成サービス",
+        "主な提供価値"
+      ],
+      "rows": [
+        [
+          "Search",
+          "Executive Search\nProfessional Search",
+          "経営層・専門人材の獲得"
+        ],
+        [
+          "Talent & Organizational Solutions",
+          "Consulting\nDigital",
+          "組織・人材変革とデータ活用"
+        ],
+        [
+          "Workforce Solutions",
+          "RPO\nInterim",
+          "大量採用・即戦力確保の支援"
+        ]
+      ],
+      "footMessage": "3グループを組み合わせ、経営から人材確保・活用までの課題に対応。",
+      "source": "Korn Ferry FY2027 Q1 Form 10-Q（2026年9月）"
+    },
+    {
+      "type": "metrics",
+      "section": "03 / PERFORMANCE",
+      "title": "FY2026のフィー収入は29.1億ドル、調整後EBITDAマージンは17.1%",
+      "subtitle": "FY2026（2026年4月30日終了）の業績",
+      "metrics": [
+        {
+          "label": "FEE REVENUE",
+          "value": "29.1億$",
+          "note": "フィー収入\n（2,907.5百万米ドル）"
+        },
+        {
+          "label": "YOY GROWTH",
+          "value": "+7%",
+          "note": "フィー収入の前年比成長率"
+        },
+        {
+          "label": "ADJ. EBITDA",
+          "value": "4.98億$",
+          "note": "調整後EBITDA\n（497.8百万米ドル）"
+        },
+        {
+          "label": "ADJ. EBITDA MARGIN",
+          "value": "17.1%",
+          "note": "調整後EBITDAマージン"
+        }
+      ],
+      "footMessage": "FY2026はフィー収入・調整後EBITDAともに前年を上回った。",
+      "source": "Korn Ferry FY2026 Form 10-K / 2026年9月9日開示"
+    },
+    {
+      "type": "comparison",
+      "section": "04 / OPERATING MODEL",
+      "title": "FY2027から3地域を報告セグメントとし、横断的なサービス提供を推進する",
+      "subtitle": "2026年5月1日からの報告体制再編",
+      "columns": [
+        {
+          "title": "FY2026まで｜ソリューション別中心",
+          "points": [
+            "事業ソリューション別の報告体系",
+            "Executive Searchには地域別区分も存在",
+            "複数サービスの専門性を組み合わせて提供"
+          ]
+        },
+        {
+          "title": "FY2027から｜地域別",
+          "points": [
+            "Americas / EMEA / APACの3地域",
+            "各地域で3つのSolution Groupを展開",
+            "顧客の購買・提供実態に近い報告体系へ"
+          ]
+        }
+      ],
+      "footMessage": "地域別の事業管理と、ソリューション横断の提供体制を両立する。",
+      "source": "Korn Ferry FY2027 Q1 Form 10-Q / 2026年9月15日 8-K"
+    }
+  ]
+}

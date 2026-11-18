@@ -24,3 +24,17 @@ jobs:
         run: |
           test -s generator/output/kf-proposal.pptx
           unzip -t generator/output/kf-proposal.pptx >/dev/null
+
+      - name: QA Korn Ferry company overview (5 slides)
+        run: node generator/qa-deck.mjs generator/examples/kf-company-overview-5slides.json
+      - name: Build Korn Ferry company overview
+        run: node generator/render-deck.mjs generator/examples/kf-company-overview-5slides.json generator/output/kf-company-overview-5slides.pptx
+      - name: Verify generated 5-page PowerPoint
+        run: |
+          test -s generator/output/kf-company-overview-5slides.pptx
+          unzip -t generator/output/kf-company-overview-5slides.pptx >/dev/null
+          test "$(unzip -Z1 generator/output/kf-company-overview-5slides.pptx | grep -Ec '^ppt/slides/slide[0-9]+\.xml$')" -eq 5
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kf-company-overview-5slides
+          path: generator/output/kf-company-overview-5slides.pptx
