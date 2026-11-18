@@ -8,6 +8,6 @@ test("KF example deck passes QA",()=>{const r=validateDeck(doc);assert.deepEqual
 test("only KF presets are allowed",()=>{assert.throws(()=>loadTheme({brand:"other"}));assert.doesNotThrow(()=>loadTheme({brand:"korn-ferry"}));});
 test("Robo identity blocked in decks",()=>{const copy=structuredClone(doc);copy.slides[1].title="ROBO CO-OP";assert.ok(validateDeck(copy).errors.length);});
 test("headline list is required",()=>{const copy=structuredClone(doc);delete copy.meta.headlineList;assert.ok(validateDeck(copy).errors.some(e=>e.includes("headlineList")));});
-test("two-line footMessage limit",()=>{const copy=structuredClone(doc);copy.slides[2].footMessage="one\\ntwo\\nthree";assert.ok(validateDeck(copy).errors.some(e=>e.includes("footMessage")));});
+test("two-line footMessage limit",()=>{const copy=structuredClone(doc);copy.slides[2].footMessage="one\ntwo\nthree";assert.ok(validateDeck(copy).errors.some(e=>e.includes("footMessage")));});
 test("matrix must be 3x3",()=>{const copy=structuredClone(doc);copy.slides.find(s=>s.type==="matrix").cells=[["a"]];assert.ok(validateDeck(copy).errors.some(e=>e.includes("matrix")));});
 test("all active slide types have definitions",()=>{const defs=JSON.parse(fs.readFileSync("contracts/layouts.json","utf8")).layouts.map(l=>l.id);for(const s of doc.slides)assert.ok(defs.includes(s.type));});
