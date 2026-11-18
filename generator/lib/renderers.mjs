@@ -1,6 +1,6 @@
-const FONT_LATIN = "Roboto";
-const FONT_JA = "Noto Sans JP";
-const FONT_MONO = "Roboto Mono";
+const FONT_LATIN = "Arial";
+const FONT_JA = "Yu Gothic";
+const FONT_MONO = "Arial";
 
 function addText(slide, text, opts, meta) {
   slide.addText(String(text ?? ""), {
@@ -15,6 +15,10 @@ function addText(slide, text, opts, meta) {
 }
 
 function addBrandMotif(pptx, slide, theme) {
+  if (theme.motif === "kf-rule") {
+    slide.addShape(pptx.ShapeType.line, { x: 0.56, y: 0.34, w: 1.02, h: 0, line: { color: theme.primary, width: 2 } });
+    return;
+  }
   if (theme.motif === "system-grid" || theme.motif === "cyber-grid") {
     const cols = theme.motif === "cyber-grid" ? 16 : 12;
     const rows = theme.motif === "cyber-grid" ? 10 : 7;
@@ -57,7 +61,7 @@ function headerText(spec, index, theme, meta) {
   if (theme.headerStyle === "lab") return `// ROBO_LAB · ${section} · ${page}`;
   if (theme.headerStyle === "manifesto") return `CO-OP LAB // ${section} // ${page}`;
   if (theme.headerStyle === "progress") return `ROBO UNIVERSITY · MODULE ${section} · ${page}`;
-  return `ROBO CO-OP / SUPPORT TOGETHER / ${section} / ${page}`;
+  return `KORN FERRY  /  ${section}  /  ${page}`;
 }
 
 function addBase(pptx, slide, spec, index, theme, meta, isCover = false) {
@@ -67,13 +71,13 @@ function addBase(pptx, slide, spec, index, theme, meta, isCover = false) {
 
   addText(slide, headerText(spec, index, theme, meta), {
     x: 0.56, y: 0.28, w: 6.8, h: 0.22,
-    fontFace: FONT_MONO, fontSize: 9.2, color: theme.muted, charSpacing: theme.codeHeader ? 1.3 : 0.8
+    fontFace: FONT_MONO, fontSize: 9.2, color: theme.primary, charSpacing: 0.3
   }, meta);
 
   const baseTitle = spec.title.length > 60 ? 25 : 29;
   addText(slide, spec.title, {
     x: 0.56, y: 0.72, w: 12.1, h: 0.72,
-    fontSize: Math.round(baseTitle * (theme.titleScale || 1)),
+    fontSize: Math.max(20, Math.round(Math.min(baseTitle, 25) * (theme.titleScale || 1))),
     bold: true, color: theme.text, fit: "shrink"
   }, meta);
 
@@ -83,16 +87,22 @@ function addBase(pptx, slide, spec, index, theme, meta, isCover = false) {
   });
 
   if (spec.source) {
-    addText(slide, `SOURCE · ${spec.source}`, {
+    addText(slide, `出典 / Source: ${spec.source}`, {
       x: 0.56, y: 7.02, w: 9.7, h: 0.18,
       fontFace: FONT_MONO, fontSize: 7.5, color: theme.muted
     }, meta);
   }
 
-  addText(slide, String(index + 1).padStart(2, "0"), {
-    x: 12.15, y: 7.0, w: 0.58, h: 0.18,
-    fontFace: FONT_MONO, fontSize: 8, color: theme.muted, align: "right"
-  }, meta);
+  if (spec.footMessage) {
+    slide.addShape(pptx.ShapeType.rect, {x:0.56,y:6.56,w:12.18,h:0.32,fill:{color:theme.scheme==="dark" ? theme.surface2 : "F1F2F1"},line:{color:theme.scheme==="dark" ? theme.surface2 : "F1F2F1",width:0}});
+    addText(slide, spec.footMessage, {x:0.76,y:6.60,w:11.75,h:0.23,fontSize:10.5,bold:true,color:theme.text,fit:"shrink"}, meta);
+  }
+  addText(slide, String(index + 1).padStart(2, "0") + "  |  © " + (meta.year || "2026") + " Korn Ferry", {
+    x:0.56,y:7.02,w:5.5,h:0.2,fontFace:FONT_MONO,fontSize:8,color:theme.muted
+  },meta);
+  addText(slide, "Korn Ferry", {
+    x:10.86,y:7.0,w:1.86,h:0.24,fontSize:11,bold:true,color:theme.primary,align:"right"
+  },meta);
 }
 
 function panel(slide, pptx, theme, x, y, w, h, fill = theme.surface) {
@@ -124,11 +134,7 @@ function bulletText(items = []) {
 
 export function renderCover({ pptx, slide, spec, index, theme, meta }) {
   addBase(pptx, slide, spec, index, theme, meta, true);
-  const label =
-    theme.brand === "robo-lab" ? (theme.mode === "expressive" ? "// ROBO_LAB · EXPERIMENTAL_SYSTEM" : "// ROBO_LAB · SYSTEMIC_LAB") :
-    theme.brand === "coop-lab" ? (theme.mode === "expressive" ? "CO-OP LAB // LET'S HACK CAPITALISM" : "CO-OP LAB // STARTUP TOGETHER") :
-    theme.brand === "robo-university" ? (theme.mode === "expressive" ? "ROBO UNIVERSITY · UPDATE IN PROGRESS" : "ROBO UNIVERSITY · LEARN TOGETHER") :
-    (theme.mode === "expressive" ? "ROBO CO-OP · HUMAN ⇄ MACHINE OS" : "ROBO CO-OP · SUPPORT TOGETHER");
+  const label = "KORN FERRY  /  CONSULTING";
   addText(slide, label, {
     x: 0.7, y: 0.55, w: 7.4, h: 0.28,
     fontFace: FONT_MONO, fontSize: 10, color: theme.primary, charSpacing: 1.2
@@ -146,7 +152,7 @@ export function renderCover({ pptx, slide, spec, index, theme, meta }) {
     x: 0.72, y: 5.9, w: 3.15, h: 0,
     line: { color: theme.primary, width: 3 }
   });
-  addText(slide, meta.author || "Robo Co-op", {
+  addText(slide, meta.author || "Korn Ferry", {
     x: 0.72, y: 6.15, w: 5.0, h: 0.28,
     fontFace: FONT_MONO, fontSize: 9.5, color: theme.muted
   }, meta);
@@ -233,13 +239,13 @@ export function renderArchitecture({ pptx, slide, spec, index, theme, meta }) {
 export function renderDemo({ pptx, slide, spec, index, theme, meta }) {
   addBase(pptx, slide, spec, index, theme, meta);
   panel(slide, pptx, theme, 0.6, 1.85, 3.45, 4.6, theme.surface);
-  const flowLabel = theme.brand === "robo-university" ? "PATH" : theme.brand === "coop-lab" ? "BUILD" : theme.brand === "robo-coop" ? "SYNC" : "FLOW";
+  const flowLabel = "PROCESS";
   addText(slide, flowLabel, {x:0.9,y:2.15,w:1,h:0.25,fontFace:FONT_MONO,fontSize:9,color:theme.primary}, meta);
   (spec.steps || []).slice(0,5).forEach((s,i) => {
     addText(slide, `${String(i+1).padStart(2,"0")}  ${s.title || s}`, {x:0.9,y:2.75+i*0.68,w:2.8,h:0.42,fontSize:11.5,color:i===0?theme.text:theme.muted,bold:i===0,fit:"shrink"}, meta);
   });
 
-  const terminalFill = theme.terminal ? (theme.brand === "robo-lab" ? "060B18" : theme.surface2) : theme.surface2;
+  const terminalFill = theme.surface2;
   panel(slide, pptx, theme, 4.45, 1.85, 8.25, 4.6, terminalFill);
   addText(slide, spec.screen.title || "SYSTEM OUTPUT", {x:4.8,y:2.12,w:4.8,h:0.3,fontFace:FONT_MONO,fontSize:9,color:theme.primary}, meta);
   (spec.screen.lines || []).slice(0,9).forEach((line,i) => {
