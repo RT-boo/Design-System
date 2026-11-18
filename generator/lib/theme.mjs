@@ -9,6 +9,6 @@ export function loadTheme(meta={}){
  const requested=meta.preset||"robo-lab-core",presetName=aliases[requested]||requested;
  const variant=contract.variants.find(v=>v.id===presetName);
  if(!variant)throw new Error(`Unknown presentation variant: ${requested}`);
- return {brand:variant.brand,presetName:variant.id,label:variant.label,mode:variant.mode,scheme:variant.scheme,dark:variant.scheme==="dark",...variant.visual,...variant.composition,...variant.features};
+ return {brand:variant.brand,presetName:variant.id,label:variant.label,mode:variant.mode,scheme:variant.scheme,dark:variant.scheme==="dark",...variant.visual,...variant.composition,...variant.features,typography:variant.typography||null};
 }
 export function paths(){return {root:ROOT};}

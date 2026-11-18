@@ -21,24 +21,30 @@ if (qa.errors.length) process.exit(1);
 
 fs.mkdirSync(path.dirname(output), { recursive: true });
 
+const theme = loadTheme(deck.meta);
+const renderMeta = {
+  ...deck.meta,
+  _fontLatin: theme.typography?.latin || "Roboto",
+  _fontJa: theme.typography?.japanese || "Noto Sans JP",
+  _fontMono: theme.typography?.mono || "Roboto Mono"
+};
 const pptx = new PptxGenJS();
 pptx.layout = "LAYOUT_WIDE";
-pptx.author = deck.meta.author || "Robo Co-op";
-pptx.company = "Robo Co-op";
+pptx.author = deck.meta.author || (theme.brand === "korn-ferry" ? "Presentation Team" : "Robo Co-op");
+pptx.company = deck.meta.company || (theme.brand === "korn-ferry" ? "" : "Robo Co-op");
 pptx.subject = deck.meta.subject || deck.meta.title;
 pptx.title = deck.meta.title;
 pptx.lang = deck.meta.language === "ja" ? "ja-JP" : "en-US";
 pptx.theme = {
-  headFontFace: deck.meta.language === "ja" ? "Noto Sans JP" : "Roboto",
-  bodyFontFace: deck.meta.language === "ja" ? "Noto Sans JP" : "Roboto",
+  headFontFace: deck.meta.language === "ja" ? renderMeta._fontJa : renderMeta._fontLatin,
+  bodyFontFace: deck.meta.language === "ja" ? renderMeta._fontJa : renderMeta._fontLatin,
   lang: pptx.lang
 };
 
-const theme = loadTheme(deck.meta);
 deck.slides.forEach((spec, index) => {
   const slide = pptx.addSlide();
   const renderer = RENDERERS[spec.type];
-  renderer({ pptx, slide, spec, index, theme, meta: deck.meta });
+  renderer({ pptx, slide, spec, index, theme, meta: renderMeta });
 });
 
 await pptx.writeFile({ fileName: output });

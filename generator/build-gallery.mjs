@@ -11,7 +11,7 @@ const active=variants.variants.filter(v=>!v.deprecated);
 const jsonDir=path.join(ROOT,"generator/output/gallery-json"),pptxDir=path.join(ROOT,"generator/output/gallery");
 fs.mkdirSync(jsonDir,{recursive:true});fs.mkdirSync(pptxDir,{recursive:true});
 for(const variant of active){
- const deck={meta:{title:`Robo Layout Gallery — ${variant.label}`,subtitle:`${layouts.layouts.length} semantic layouts · ${variant.fit}`,brand:variant.brand,preset:variant.id,author:"Robo Co-op",language:"en"},slides:layouts.layouts.map(l=>structuredClone(l.example))};
+ const deck={meta:{title:`${variant.brand === "korn-ferry" ? "Korn Ferry" : "Robo"} Layout Gallery — ${variant.label}`,subtitle:`${layouts.layouts.length} semantic layouts · ${variant.fit}`,brand:variant.brand,preset:variant.id,author:variant.brand === "korn-ferry" ? "Presentation Team" : "Robo Co-op",language:"en"},slides:layouts.layouts.map(l=>structuredClone(l.example))};
  const json=path.join(jsonDir,`${variant.id}.json`),pptx=path.join(pptxDir,`${variant.id}.pptx`);
  fs.writeFileSync(json,JSON.stringify(deck,null,2)+"\n");
  const run=spawnSync(process.execPath,[path.join(ROOT,"generator/render-deck.mjs"),json,pptx],{stdio:"inherit"});

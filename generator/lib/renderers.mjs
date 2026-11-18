@@ -3,19 +3,26 @@ const FONT_JA = "Noto Sans JP";
 const FONT_MONO = "Roboto Mono";
 
 function addText(slide, text, opts, meta) {
+  const fontFace = opts.fontFace === FONT_MONO
+    ? (meta._fontMono || FONT_MONO)
+    : (opts.fontFace || (meta.language === "ja" ? (meta._fontJa || FONT_JA) : (meta._fontLatin || FONT_LATIN)));
   slide.addText(String(text ?? ""), {
     margin: 0,
     breakLine: false,
-    fontFace: meta.language === "ja" ? FONT_JA : FONT_LATIN,
     color: opts.color,
     fontSize: opts.fontSize,
     bold: opts.bold,
-    ...opts
+    ...opts,
+    fontFace
   });
 }
 
 function addBrandMotif(pptx, slide, theme) {
-  if (theme.motif === "system-grid" || theme.motif === "cyber-grid") {
+  if (theme.motif === "kf-six-degree") {
+    // Six-degree-inspired line geometry only; this is not a company logo asset.
+    slide.addShape(pptx.ShapeType.line, { x: 11.25, y: 0.30, w: 1.47, h: 0.155, line: { color: theme.primary, width: 2.2 } });
+    slide.addShape(pptx.ShapeType.line, { x: 11.25, y: 0.49, w: 0.47, h: 0.05, line: { color: theme.accent, width: 1.1 } });
+  } else if (theme.motif === "system-grid" || theme.motif === "cyber-grid") {
     const cols = theme.motif === "cyber-grid" ? 16 : 12;
     const rows = theme.motif === "cyber-grid" ? 10 : 7;
     const transparency = Math.max(82, Math.round(100 - (theme.gridOpacity || 0.08) * 100));
@@ -54,6 +61,7 @@ function addBrandMotif(pptx, slide, theme) {
 function headerText(spec, index, theme, meta) {
   const section = String(spec.section || "DECK").toUpperCase();
   const page = String(index + 1).padStart(2, "0");
+  if (theme.headerStyle === "korn-ferry") return `KORN FERRY / ${section} / ${page}`;
   if (theme.headerStyle === "lab") return `// ROBO_LAB · ${section} · ${page}`;
   if (theme.headerStyle === "manifesto") return `CO-OP LAB // ${section} // ${page}`;
   if (theme.headerStyle === "progress") return `ROBO UNIVERSITY · MODULE ${section} · ${page}`;
@@ -123,8 +131,14 @@ function bulletText(items = []) {
 }
 
 export function renderCover({ pptx, slide, spec, index, theme, meta }) {
+  // Even the light consulting variant uses the brand's Forest Green on covers.
+  if (theme.brand === "korn-ferry" && theme.scheme === "light") {
+    theme = { ...theme, bg: "053328", surface: "053328", surface2: "00634F",
+      text: "FFFFFF", muted: "DAD8D6", border: "00634F", primary: "77BC1F", accent: "77BC1F" };
+  }
   addBase(pptx, slide, spec, index, theme, meta, true);
   const label =
+    theme.brand === "korn-ferry" ? "KORN FERRY / CONSULTING" :
     theme.brand === "robo-lab" ? (theme.mode === "expressive" ? "// ROBO_LAB · EXPERIMENTAL_SYSTEM" : "// ROBO_LAB · SYSTEMIC_LAB") :
     theme.brand === "coop-lab" ? (theme.mode === "expressive" ? "CO-OP LAB // LET'S HACK CAPITALISM" : "CO-OP LAB // STARTUP TOGETHER") :
     theme.brand === "robo-university" ? (theme.mode === "expressive" ? "ROBO UNIVERSITY · UPDATE IN PROGRESS" : "ROBO UNIVERSITY · LEARN TOGETHER") :
@@ -146,7 +160,7 @@ export function renderCover({ pptx, slide, spec, index, theme, meta }) {
     x: 0.72, y: 5.9, w: 3.15, h: 0,
     line: { color: theme.primary, width: 3 }
   });
-  addText(slide, meta.author || "Robo Co-op", {
+  addText(slide, meta.author || (theme.brand === "korn-ferry" ? "Presentation Team" : "Robo Co-op"), {
     x: 0.72, y: 6.15, w: 5.0, h: 0.28,
     fontFace: FONT_MONO, fontSize: 9.5, color: theme.muted
   }, meta);
@@ -194,7 +208,7 @@ export function renderComparison({ pptx, slide, spec, index, theme, meta }) {
     addText(slide, c.label || `OPTION ${i+1}`, {x:x+0.3,y:2.15,w:w-0.6,h:0.25,fontFace:FONT_MONO,fontSize:8.5,color:i===0?theme.primary:theme.muted}, meta);
     addText(slide, c.title || "", {x:x+0.3,y:2.58,w:w-0.6,h:0.65,fontSize:19,bold:true,color:theme.text,fit:"shrink"}, meta);
     slide.addText(bulletText(c.points || []), {
-      x:x+0.3,y:3.48,w:w-0.65,h:2.3,margin:0.03,fontFace:meta.language==="ja"?FONT_JA:FONT_LATIN,
+      x:x+0.3,y:3.48,w:w-0.65,h:2.3,margin:0.03,fontFace:meta.language==="ja"?(meta._fontJa||FONT_JA):(meta._fontLatin||FONT_LATIN),
       fontSize:12.5,color:theme.muted,breakLine:false,paraSpaceAfterPt:8
     });
   });

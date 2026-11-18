@@ -306,6 +306,90 @@
         "gridOpacity": 0,
         "scanOpacity": 0
       }
+    },
+    {
+      "id": "korn-ferry-core",
+      "brand": "korn-ferry",
+      "label": "Korn Ferry / Consulting Core (public-inspired)",
+      "mode": "core",
+      "scheme": "light",
+      "fit": "Executive summaries, organization design, succession planning, talent strategy and evidence-led client presentations.",
+      "visual": {
+        "bg": "FFFFFF",
+        "surface": "FFFFFF",
+        "surface2": "F5F5F4",
+        "text": "053328",
+        "muted": "43534E",
+        "border": "DAD8D6",
+        "primary": "00634F",
+        "accent": "77BC1F",
+        "accent2": "053328",
+        "danger": "A33136",
+        "success": "00634F",
+        "warning": "568E30"
+      },
+      "composition": {
+        "titleScale": 1,
+        "panelShape": "square",
+        "borderWidth": 0.7,
+        "ruleWidth": 0.7,
+        "density": "balanced"
+      },
+      "features": {
+        "motif": "kf-six-degree",
+        "headerStyle": "korn-ferry",
+        "codeHeader": false,
+        "terminal": false,
+        "gridOpacity": 0,
+        "scanOpacity": 0
+      },
+      "typography": {
+        "latin": "Arial",
+        "japanese": "Yu Gothic",
+        "mono": "Arial"
+      }
+    },
+    {
+      "id": "korn-ferry-forest",
+      "brand": "korn-ferry",
+      "label": "Korn Ferry / Forest (public-inspired)",
+      "mode": "expressive",
+      "scheme": "dark",
+      "fit": "High-contrast introductory decks, section dividers and keynote-style executive narratives.",
+      "visual": {
+        "bg": "053328",
+        "surface": "00634F",
+        "surface2": "064A3B",
+        "text": "FFFFFF",
+        "muted": "DAD8D6",
+        "border": "438878",
+        "primary": "77BC1F",
+        "accent": "77BC1F",
+        "accent2": "FFFFFF",
+        "danger": "FFA3A3",
+        "success": "77BC1F",
+        "warning": "DCEBA9"
+      },
+      "composition": {
+        "titleScale": 1.04,
+        "panelShape": "square",
+        "borderWidth": 0.7,
+        "ruleWidth": 0.75,
+        "density": "airy"
+      },
+      "features": {
+        "motif": "kf-six-degree",
+        "headerStyle": "korn-ferry",
+        "codeHeader": false,
+        "terminal": false,
+        "gridOpacity": 0,
+        "scanOpacity": 0
+      },
+      "typography": {
+        "latin": "Arial",
+        "japanese": "Yu Gothic",
+        "mono": "Arial"
+      }
     }
   ]
 }

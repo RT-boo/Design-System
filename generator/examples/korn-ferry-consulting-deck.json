@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "title": "組織・人材戦略の論点整理",
+    "subtitle": "公開ブランド情報に基づくデザイン確認用サンプル",
+    "brand": "korn-ferry",
+    "preset": "korn-ferry-core",
+    "author": "Presentation Team",
+    "language": "ja"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "title": "組織・人材戦略の論点整理",
+      "subtitle": "公開ガイド準拠のスタイル検証用（架空の例）",
+      "section": "OPEN"
+    },
+    {
+      "type": "statement",
+      "title": "人材戦略の実効性は、重要ポストと必要能力の明確化から始まる",
+      "section": "KEY MESSAGE",
+      "body": "経営戦略と人材ポートフォリオをつなぎ、意思決定の対象を明確にする。",
+      "proof": "これはレイアウト検証用の例示であり、特定企業の分析結果ではありません。",
+      "source": "Illustrative layout sample; no client data"
+    },
+    {
+      "type": "metrics",
+      "title": "後継者計画の検討を三つの観点に整理する",
+      "section": "FRAMEWORK",
+      "metrics": [
+        {
+          "label": "01 / 対象",
+          "value": "定義",
+          "note": "重要ポストと範囲を定める"
+        },
+        {
+          "label": "02 / 評価",
+          "value": "可視化",
+          "note": "要件と現状のギャップを把握する"
+        },
+        {
+          "label": "03 / 育成",
+          "value": "実行",
+          "note": "育成機会と配置を設計する"
+        }
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "現状の属人的な運用から、要件に基づく継続運用へ移行する",
+      "section": "COMPARISON",
+      "columns": [
+        {
+          "label": "AS IS",
+          "title": "現状",
+          "points": [
+            "判断基準が暗黙知",
+            "候補者評価が非連続",
+            "育成施策との接続が弱い"
+          ]
+        },
+        {
+          "label": "TO BE",
+          "title": "目指す姿",
+          "points": [
+            "要件と評価基準を明示",
+            "定期的な候補者レビュー",
+            "育成・配置と連動"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "title": "設計から運用定着までを四つのステップで進める",
+      "section": "ROADMAP",
+      "steps": [
+        {
+          "title": "対象定義",
+          "body": "重要ポストを特定する"
+        },
+        {
+          "title": "要件設計",
+          "body": "経験・能力を整理する"
+        },
+        {
+          "title": "評価",
+          "body": "候補者の準備度を見る"
+        },
+        {
+          "title": "運用",
+          "body": "育成・配置と連動する"
+        }
+      ]
+    },
+    {
+      "type": "architecture",
+      "title": "経営課題・要件・人材施策を一貫した構造でつなぐ",
+      "section": "OPERATING MODEL",
+      "layers": [
+        {
+          "title": "経営課題",
+          "nodes": [
+            "戦略優先事項",
+            "事業上のリスク"
+          ]
+        },
+        {
+          "title": "重要ポスト",
+          "nodes": [
+            "役割・責任",
+            "成功要件"
+          ]
+        },
+        {
+          "title": "人材",
+          "nodes": [
+            "候補者群",
+            "準備度"
+          ]
+        },
+        {
+          "title": "施策",
+          "nodes": [
+            "育成",
+            "配置"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -150,6 +150,43 @@
         "green-on-white accessibility failures",
         "dense academic-document styling"
       ]
+    },
+    {
+      "id": "korn-ferry",
+      "name": "Korn Ferry (public guidelines)",
+      "tagline": "Business advisors. Career makers.",
+      "promise": "Be More Than",
+      "essence": "Human-centered organizational and talent consulting presented with clear, evidence-led communication.",
+      "tension": "Human potential × analytical rigor",
+      "motif": "kf-six-degree",
+      "signature": [
+        "Forest Green and white foundation",
+        "one Apple Green accent family per deck",
+        "restrained six-degree angled line",
+        "clear analytical hierarchy",
+        "source-aware consulting narratives"
+      ],
+      "notation": [
+        "INSIGHT",
+        "EVIDENCE",
+        "IMPLICATION",
+        "RECOMMENDATION",
+        "SOURCE"
+      ],
+      "principles": [
+        "Prioritize clear analytical conclusions and sufficient whitespace.",
+        "Use Forest Green as the brand foundation; apply Apple Green sparingly as the sole secondary accent.",
+        "Use Microsoft-compatible Arial in editable PowerPoint; do not redistribute licensed fonts.",
+        "Prefer abstract six-degree-inspired geometry, not reconstructed company logos.",
+        "Keep facts, estimates, illustrative placeholders, and recommendations explicit."
+      ],
+      "avoid": [
+        "unlicensed brand assets or logos",
+        "bundled Gotham or Turbinado files",
+        "conflicting secondary accent colors",
+        "fictional client data",
+        "claiming this is the official internal slide master"
+      ]
     }
   ]
 }

@@ -47,6 +47,8 @@ Each brand has **Core + Expressive** presentation modes.
 - `coop-lab-hack`
 - `robo-university-core`
 - `robo-university-explore`
+- `korn-ferry-core` — light consulting slides with Forest Green covers
+- `korn-ferry-forest` — Forest Green dark slides
 
 Legacy names remain aliases for compatibility, but new decks should use the brand-owned names.
 
@@ -101,9 +103,28 @@ Existing deck JSON remains valid. New decks may add:
 
 ## Visual regression
 
-8 variants × 7 semantic layouts = **56 rendered regression cases**.
+10 variants × 7 semantic layouts = **70 rendered regression cases**.
 
 See [Brand Visual Systems](visual-systems/README.md).
+
+## Korn Ferry-inspired presentation option (public information only)
+
+This repository includes two **unofficial** presentation variants informed by Korn Ferry's [public February 2025 brand experience guide](https://crs.kornferry.com/kf-brand-experience-v1-4-1). They are not Korn Ferry's approved internal PowerPoint master.
+
+- `korn-ferry-core`: white analytical slides with Forest Green (`#00634F`) and a Dark Forest Green (`#053328`) cover.
+- `korn-ferry-forest`: high-contrast Dark Forest Green presentation.
+- Apple Green (`#77BC1F`) is the single secondary accent in each variant.
+- Editable Microsoft PowerPoint output uses Arial for Latin text. Japanese text uses a **practical Yu Gothic fallback**, not an asserted Korn Ferry Japanese font standard.
+- The linework is a minimal six-degree-*inspired* motif; **no company logo, protected assets, internal master, or licensed font files are included**.
+
+Example:
+
+```bash
+node generator/qa-deck.mjs generator/examples/korn-ferry-consulting-deck.json
+node generator/render-deck.mjs generator/examples/korn-ferry-consulting-deck.json generator/output/korn-ferry-consulting-deck.pptx
+```
+
+Select `"brand": "korn-ferry"` and `"preset": "korn-ferry-core"` (or `"korn-ferry-forest"`) under `meta` in any supported deck JSON. These options apply to **slide generation only**, not to the existing Robo web/UI themes. For official client deliverables, check current internal brand policy and use authorized corporate assets.
 
 ## Commands
 

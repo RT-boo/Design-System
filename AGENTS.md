@@ -117,6 +117,7 @@ Archetypes guide reasoning and composition. They do not replace the renderer con
 | `robo-lab` | An applied systems lab where emerging technology becomes real-world infrastructure and systemic change. | Experimental frontier × production discipline | `system-grid` |
 | `coop-lab` | A venture and ownership lab for building companies, governance, and value distribution differently. | Constructive rebellion × credible venture building | `collective-blocks` |
 | `robo-university` | A continuous learning system that helps people explore emerging tools, build agency, and keep updating. | Exploration × progression | `learning-path` |
+| `korn-ferry` | Human-centered organizational and talent consulting presented with clear, evidence-led communication. | Human potential × analytical rigor | `kf-six-degree` |
 
 A deck's `meta.brand` must match the selected variant's brand. Do not use one brand's visual grammar as a generic skin for another brand.
 
@@ -141,6 +142,8 @@ A deck's `meta.brand` must match the selected variant's brand. Do not use one br
 | `coop-lab-hack` | `coop-lab` | expressive | dark | Manifestos, startup events, new ownership concepts, experimental venture launches, and provocative strategy. |
 | `robo-university-core` | `robo-university` | core | light | Training, curriculum, cohort learning, capability building, learning outcomes, and education partnerships. |
 | `robo-university-explore` | `robo-university` | expressive | dark | Learning launches, explorative workshops, future-skills narratives, community learning, and experimental education. |
+| `korn-ferry-core` | `korn-ferry` | core | light | Executive summaries, organization design, succession planning, talent strategy and evidence-led client presentations. |
+| `korn-ferry-forest` | `korn-ferry` | expressive | dark | High-contrast introductory decks, section dividers and keynote-style executive narratives. |
 
 ## Brand grammar
 ### Robo Co-op
@@ -170,6 +173,13 @@ A deck's `meta.brand` must match the selected variant's brand. Do not use one br
 **Use:** learning paths, checkpoints, module maps, version/progress notation, lime signal, purple discovery accent, gold achievement cue.
 **Principles:** Make progress visible without making learning feel linear or school-like. Use paths, checkpoints, and branching modules as the visual grammar. Fresh Lime is the active learning signal; Energy Purple marks exploration; Achieve Gold marks milestones. Keep the tone optimistic, capable, and exploratory.
 **Avoid:** school chalkboard clichés, childish gamification, green-on-white accessibility failures, dense academic-document styling.
+
+### Korn Ferry (public guidelines)
+**Tagline:** Business advisors. Career makers.
+**Essence:** Human-centered organizational and talent consulting presented with clear, evidence-led communication.
+**Use:** Forest Green and white foundation, one Apple Green accent family per deck, restrained six-degree angled line, clear analytical hierarchy, source-aware consulting narratives.
+**Principles:** Prioritize clear analytical conclusions and sufficient whitespace. Use Forest Green as the brand foundation; apply Apple Green sparingly as the sole secondary accent. Use Microsoft-compatible Arial in editable PowerPoint; do not redistribute licensed fonts. Prefer abstract six-degree-inspired geometry, not reconstructed company logos. Keep facts, estimates, illustrative placeholders, and recommendations explicit.
+**Avoid:** unlicensed brand assets or logos, bundled Gotham or Turbinado files, conflicting secondary accent colors, fictional client data, claiming this is the official internal slide master.
 
 ## Layouts
 | Layout | Question | Best for | Required fields |
