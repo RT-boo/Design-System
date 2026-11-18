@@ -1,14 +1,10 @@
-# Robo Brand Visual Systems v1
+# Korn Ferry — Presentation Visual System
 
-Each brand has its own presentation identity. Variants are not simple color swaps: they alter notation, motif, panel treatment, hierarchy, and diagram grammar.
+| Preset | Role | Main treatment |
+|---|---|---|
+| `kf-core` | Consulting body pages | White background, Forest Green structure, neutral panels, gray takeaway band |
+| `kf-cover` | Cover / emphasis | Dark Forest Green background, restrained light green emphasis |
 
-| Brand | Core | Expressive | Visual idea |
-|---|---|---|---|
-| Robo Co-op | `robo-coop-core` | `robo-coop-dark` | Human ⇄ Machine synchronization |
-| Robo Lab | `robo-lab-core` | `robo-lab-cyber` | Systems, experiments, trace, measured cyberpunk |
-| Co-op Lab | `coop-lab-core` | `coop-lab-hack` | Cooperative venture building + constructive rebellion |
-| Robo University | `robo-university-core` | `robo-university-explore` | Learning paths, checkpoints, continuous updating |
+Active visual grammar lives in `contracts/brands.json`; visual tokens for interactive web and 3D interfaces live in `tokens/brands/korn-ferry.json`. These modes apply to existing semantic layouts without removing renderers or tests.
 
-The canonical brand grammar lives in `contracts/brands.json`.
-
-**Regression coverage:** 8 variants × 7 semantic layouts = **56 renders**.
+Compatibility: older variant identifiers can still be read as aliases; the legacy brand-specific files remain as historic source and are not the new output defaults.
