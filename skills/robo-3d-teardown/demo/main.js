@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { runSim } from 'teardown-kit/runtime.js';
 import {pose, DIMENSIONS, clamp} from './model.js';
 
-// build-demo.mjs replaces these two markers with verified canonical Robo data.
+// build-demo.mjs replaces these two markers with verified Korn Ferry-style tokens.
 const theme = __R3D_THEME_JSON__;
 const logo = __R3D_LOGO_DATA_URI__;
 const root = document.documentElement;
@@ -22,7 +22,7 @@ const cssRoles = {
 };
 for (const [role,value] of Object.entries(cssRoles)) root.style.setProperty(role,value);
 root.lang = 'ja';
-root.dataset.brand='robo-lab';
+root.dataset.brand='korn-ferry';
 root.dataset.roboTheme=theme.theme;
 
 const material = (color, opacity=1, metalness=.1) =>
@@ -53,7 +53,7 @@ await runSim({
   fps:60,
   theme:'light',
   accent:theme.stage.activePart,
-  hud:{enabled:false,title:'ROBO 3D',subtitle:' / LAB DEMO'},
+  hud:{enabled:false,title:'KF 3D',subtitle:' / MECHANISM DEMO'},
   director:{enabled:false}
 }, async ({canvas})=>{
   let renderer;
@@ -135,9 +135,9 @@ await runSim({
   }
 
   const app=document.getElementById('app');
-  const ui=textElement('div','r3d-ui'); ui.setAttribute('aria-label','Robo Lab 3D simulation controls');
+  const ui=textElement('div','r3d-ui'); ui.setAttribute('aria-label','Korn Ferry 3D simulation controls');
   ui.innerHTML=`
-    <header class="mast"><img id="robo-logo" alt="Robo Lab" /><span class="edition">Robo Lab / Interactive 3D</span></header>
+    <header class="mast"><img id="robo-logo" alt="Korn Ferry (text placeholder)" /><span class="edition">Korn Ferry / Interactive 3D</span></header>
     <section class="intro" aria-label="Introduction">
       <span class="tag">01 / MECHANISM LAB</span>
       <h1>機構を、<br>触って理解する。</h1>
