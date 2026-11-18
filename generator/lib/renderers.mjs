@@ -88,7 +88,7 @@ function addBase(pptx, slide, spec, index, theme, meta, isCover = false) {
 
   if (spec.source) {
     addText(slide, `出典 / Source: ${spec.source}`, {
-      x: 0.56, y: 7.02, w: 9.7, h: 0.18,
+      x: 0.56, y: 7.015, w: 9.7, h: 0.18,
       fontFace: FONT_MONO, fontSize: 7.5, color: theme.muted
     }, meta);
   }
@@ -98,10 +98,10 @@ function addBase(pptx, slide, spec, index, theme, meta, isCover = false) {
     addText(slide, spec.footMessage, {x:0.76,y:6.60,w:11.75,h:0.23,fontSize:10.5,bold:true,color:theme.text,fit:"shrink"}, meta);
   }
   addText(slide, String(index + 1).padStart(2, "0") + "  |  © " + (meta.year || "2026") + " Korn Ferry", {
-    x:0.56,y:7.02,w:5.5,h:0.2,fontFace:FONT_MONO,fontSize:8,color:theme.muted
+    x:0.56,y:7.29,w:5.5,h:0.18,fontFace:FONT_MONO,fontSize:8,color:theme.muted
   },meta);
   addText(slide, "Korn Ferry", {
-    x:10.86,y:7.0,w:1.86,h:0.24,fontSize:11,bold:true,color:theme.primary,align:"right"
+    x:10.86,y:7.27,w:1.86,h:0.2,fontSize:11,bold:true,color:theme.primary,align:"right"
   },meta);
 }
 
