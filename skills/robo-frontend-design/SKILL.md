@@ -1,11 +1,11 @@
 ---
-name: robo-frontend-design
-description: Design, build, or restyle production-ready websites, landing pages, product UIs, dashboards, and interactive prototypes for Robo Co-op, Robo Lab, Co-op Lab, or Robo University. Use when an agent must apply existing Robo design tokens and brand identity while avoiding generic AI-generated layouts. Do not use for PowerPoint decks; use the repository Presentation OS for those.
+name: kf-frontend-design-compat
+description: Design, build, or restyle production-ready websites, dashboards and interfaces using Korn Ferry-inspired tokens and public branding. The directory retains its legacy path for build compatibility.
 ---
 
-# Robo Frontend Design
+# Korn Ferry Frontend Design
 
-Create distinctive, usable Robo-branded interfaces. Treat the brand system as the source of truth and Anthropic's frontend-design method as a **design-review process**, not a replacement theme or component library.
+Create distinctive, usable Korn Ferry-styled interfaces. Treat the brand system as the source of truth and Anthropic's frontend-design method as a **design-review process**, not a replacement theme or component library.
 
 ## 1. Respect the design-system contract
 
@@ -13,17 +13,17 @@ Read the relevant files before proposing visual changes:
 
 - `BRAND_FOUNDATIONS.md` — typography, semantics, accessibility and logo rules.
 - `tokens/core.json` — spacing, type, breakpoints, focus, motion and density.
-- `tokens/brands/<brand>.json` — canonical brand palette and light/dark semantic themes.
+- `tokens/brands/korn-ferry.json` — KF palette and light/dark semantic themes.
 - `src/css/` — existing styles and reusable components.
-- `visual-systems/<brand>.md` and `contracts/brands.json` — brand-specific visual grammar.
+- `contracts/brands.json` and `BRAND_FOUNDATIONS.md` — KF-specific visual grammar.
 
-If operating outside the design-system checkout, request the relevant exported tokens or reference screenshots; do not invent a new Robo palette.
+If operating outside the design-system checkout, request the resolved KF tokens or reference screenshots; do not invent a new palette.
 
 **Priority:** explicit user brief > approved brand tokens and accessibility requirements > reusable components > aesthetic exploration. A user's explicit brand/theme selection cannot be silently replaced by a fashionable look.
 
-Use semantic CSS variables such as `--rds-color-surface-raised`, `--rds-color-text`, `--rds-color-primary-strong`, and `--rds-color-focus`. Avoid hardcoded approximate brand colors. Preserve Roboto (Latin) and Noto Sans JP (Japanese), unless a specific approved exception is supplied. Use real logos; never recreate them with text or AI imagery.
+Use semantic CSS variables such as `--rds-color-surface-raised`, `--rds-color-text`, `--rds-color-primary-strong`, and `--rds-color-focus`. Avoid hardcoded approximate brand colors. Use Arial for Latin characters and numerals and Yu Gothic as a Japanese system fallback. Only use an authorized official logo asset. The text-only Korn Ferry label in demos is a placeholder, not official logo artwork.
 
-For web UI, a light Robo Lab brief should use the existing `robo-lab` **light** theme, including ice-blue surfaces and primary blue. Do not infer web themes from the Presentation OS: the presentation variants `robo-lab-core` and `robo-lab-cyber` are both dark.
+Use `data-brand="korn-ferry"` and the KF light/dark semantic web tokens; do not copy PowerPoint-specific layout rules into generic web interfaces.
 
 ## 2. Establish the brief before writing code
 
@@ -59,10 +59,8 @@ Keep the visual voice coherent. Invest character in one signature element; subor
 - Keep Japanese and English typography/readability appropriate to each language.
 
 Brand signatures, not universal defaults:
-- **Robo Co-op:** human ⇄ machine cooperation, connection and calm trust.
-- **Robo Lab:** legible systems, traces and measured technical precision; no fictional code or gratuitous neon.
-- **Co-op Lab:** shared ownership, constructive experimentation and bold but readable composition.
-- **Robo University:** exploration, progress and branching learning journeys, not childish gamification.
+- **Korn Ferry:** Forest Green, Dark Forest Green, highly readable white content surfaces, understated typography and clear evidence hierarchy.
+- **Interactive applications:** Keep interface feedback and mechanics meaningful; do not apply decorative corporate presentation panels to every UI component.
 
 ## 5. Review the rendered result
 
@@ -74,4 +72,4 @@ Report the chosen brand/theme, the intentional design decision, reused tokens/co
 
 This skill applies to **websites and software UI**. `AGENTS.md`, `contracts/`, and `slides/` govern editable presentation decks. Use the Presentation OS for slide generation; carry over only general critique principles when compatible.
 
-Adapted as an original Robo-specific workflow after review of Anthropic's `frontend-design` skill (Apache-2.0): https://github.com/anthropics/skills/tree/main/skills/frontend-design . See `references/upstream.md` and `LICENSE-ANTHROPIC.txt`.
+Adapted as an original KF-specific workflow after review of Anthropic's `frontend-design` skill (Apache-2.0): https://github.com/anthropics/skills/tree/main/skills/frontend-design . See `references/upstream.md` and `LICENSE-ANTHROPIC.txt`.
