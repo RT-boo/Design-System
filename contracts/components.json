@@ -1,6 +1,6 @@
 {
   "$meta": {
-    "name": "Robo Presentation Component Contract",
+    "name": "Korn Ferry Presentation Component Contract",
     "version": "0.2.0",
     "description": "Reusable presentation primitives. Components support layouts; they do not replace semantic layout selection."
   },
@@ -8,14 +8,15 @@
     "Use components to reinforce meaning, not to simulate a technical aesthetic.",
     "Use real technical content in terminal or code treatments.",
     "Use the same component for the same semantic role within one deck.",
-    "Prefer a small vocabulary of repeated components to ad hoc decoration."
+    "Prefer a small vocabulary of repeated components to ad hoc decoration.",
+    "In consulting decks, favor evidence strips and KPI cards over faux terminal decorations."
   ],
   "components": [
     {
       "id": "code-header",
       "purpose": "Machine-readable section context.",
       "bestFor": [
-        "Robo Lab / Tech",
+        "KF interactive / technical",
         "technical decks"
       ],
       "fields": [
