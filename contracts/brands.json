@@ -2,7 +2,7 @@
   "$meta": {
     "name": "Robo Brand Presentation Systems",
     "version": "1.0.0",
-    "description": "Brand-level presentation identities."
+    "description": "Brand-level presentation identities, including public-source Korn Ferry adaptation."
   },
   "brands": [
     {
@@ -149,6 +149,44 @@
         "childish gamification",
         "green-on-white accessibility failures",
         "dense academic-document styling"
+      ]
+    },
+    {
+      "id": "korn-ferry",
+      "name": "Korn Ferry",
+      "tagline": "Be More Than",
+      "promise": "Human-centered talent and organizational consulting.",
+      "essence": "Clear, evidence-led recommendations that connect people, organization, and business decisions.",
+      "tension": "Human insight × analytical rigor",
+      "motif": "kf-six-degree",
+      "signature": [
+        "Forest Green and Dark Forest Green foundation",
+        "white content surfaces",
+        "restrained Apple green emphasis",
+        "6-degree-inspired directional geometry",
+        "clear comparison and evidence hierarchy",
+        "Arial for Microsoft PowerPoint"
+      ],
+      "notation": [
+        "INSIGHT",
+        "IMPLICATION",
+        "DECISION",
+        "SOURCE",
+        "NEXT STEPS"
+      ],
+      "principles": [
+        "Use Forest Green as the brand anchor; keep regular content slides clear and highly legible.",
+        "Use only one secondary palette color per deck alongside KF primary colors; default to no secondary color.",
+        "Use Arial in Microsoft PowerPoint; do not bundle proprietary Gotham or Turbinado fonts.",
+        "Use action-oriented titles, concise evidence, and explicit source notes; never represent sample information as client data.",
+        "Brand-inspired shapes are not a substitute for the official logo; never fabricate the KF monogram."
+      ],
+      "avoid": [
+        "Robo visual motifs and labels",
+        "fake Korn Ferry monograms or copied trademarks",
+        "multiple competing secondary accent colors",
+        "neon cyber aesthetics",
+        "unverified claims of internal template parity"
       ]
     }
   ]
