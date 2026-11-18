@@ -1,18 +1,18 @@
 ---
-name: robo-3d-teardown
-description: Create and review Robo-branded interactive 3D mechanical explainers, exploded views, cutaways, or equipment training simulators from reference images, dimensions, and mechanism specifications. Use for Robo Co-op, Robo Lab, Co-op Lab, or Robo University when working parts must be inspected or operated in the browser; optionally coordinate with the external elvarofficial/teardown skill. Do not use for ordinary slides, generic dashboards, or photorealistic CAD reconstruction.
+name: kf-3d-teardown-compat
+description: Build KF-styled interactive 3D mechanical explainers while keeping the original WebGL rendering, model and QA pipeline. The directory name is retained for backward compatibility.
 ---
 
-# Robo 3D Teardown
+# Korn Ferry 3D Teardown
 
-Build an inspectable, usable 3D mechanism demo while keeping **Robo Design System** the authority for visual identity. This is a Robo-specific integration workflow inspired by [elvarofficial/teardown](https://github.com/elvarofficial/teardown), **not** a bundled copy of its runtime. Its executable generator and examples must be installed separately after source/security review. See `references/upstream.md`.
+Build an inspectable, usable 3D mechanism demo while keeping **Korn Ferry Style Design System** the authority for visual identity. This is a KF-specific integration workflow inspired by [elvarofficial/teardown](https://github.com/elvarofficial/teardown), **not** a bundled copy of its runtime. Its executable generator and examples must be installed separately after source/security review. See `references/upstream.md`.
 
 ## 1. Scope and source of truth
 
 - This skill concerns **mechanical or spatial explanations with meaningful 3D interaction**. Do not add 3D to a slide or landing page just for decoration.
 - For ordinary web UI use `skills/robo-frontend-design/SKILL.md`; for editable PowerPoint use root `AGENTS.md` and `contracts/`. This skill does not modify those systems.
-- Read `tokens/brands/<brand>.json`, `tokens/core.json`, `BRAND_FOUNDATIONS.md`, and `contracts/brands.json`. Use the existing **light** Robo Lab web theme when requested, even though Robo Lab's presentation variants are dark.
-- Never copy another brand's logo, palette, typeface, or trademark into the output. Use real approved logo assets, not recreated text/AI logos.
+- Read `tokens/brands/korn-ferry.json`, `tokens/core.json`, `BRAND_FOUNDATIONS.md`, and `contracts/brands.json`. Use the KF light/dark semantic theme appropriate to the requested 3D UI.
+- Never copy another brand's logo, palette, typeface, or trademark into the output. Use an authorized logo asset only; otherwise use a clearly text-only Korn Ferry label without claiming to reproduce the official mark.
 
 ## 2. Require engineering evidence before modeling
 
@@ -28,7 +28,7 @@ Use **Three.js** or a suitable existing renderer. For the integrated Robo exampl
 
 - Implement orbit/zoom, component selection, exploded/cutaway view, reset, play/pause, and explicit navigation between subsystems.
 - Keep the moving component visibly identifiable; connect changes to real operational state and readable callouts.
-- Stage **and HUD** must use brand/theme tokens. Resolve tokens via `npm run tokens`, then export a portable theme with `node skills/robo-3d-teardown/scripts/export-theme.mjs --brand robo-lab --theme light --out robo-lab-3d-theme.json`. See `references/brand-bridge.md`.
+- Stage **and HUD** must use brand/theme tokens. Resolve tokens via `npm run tokens`, then export a portable theme with `node skills/robo-3d-teardown/scripts/export-theme.mjs --brand korn-ferry --theme light --out kf-3d-theme.json`. See `references/brand-bridge.md`.
 - Follow `prefers-reduced-motion`, keyboard focus, meaningful control labels, and touch targets. Provide a static fallback or transcript where 3D is unavailable.
 - Prefer progressive loading and quality tiers for mobile/integrated GPUs; do not assume 60 fps or sub-1 MB size without measurement.
 
@@ -42,11 +42,11 @@ Use **Three.js** or a suitable existing renderer. For the integrated Robo exampl
 
 ## Deliverables
 
-Provide (a) the live interactive HTML/app or its verified build path, (b) a part/behavior manifest, (c) the chosen Robo brand/theme and exported color roles, (d) screenshots or a verified demo, and (e) the QA/accuracy caveats. Only offer a video when capture has actually succeeded. For a live example, run `npm run 3d:test`, then `npm run 3d:build` and `npm run 3d:qa` with an authorized upstream checkout; see `demo/README.md`. The GitHub Actions workflow `robo-3d-teardown.yml` produces and tests the self-contained offline HTML.
+Provide (a) the live interactive HTML/app or its verified build path, (b) a part/behavior manifest, (c) the KF theme and exported color roles, (d) screenshots or a verified demo, and (e) the QA/accuracy caveats. Only offer a video when capture has actually succeeded. For a live example, run `npm run 3d:test`, then `npm run 3d:build` and `npm run 3d:qa` with an authorized upstream checkout; see `demo/README.md`. The GitHub Actions workflow `robo-3d-teardown.yml` produces and tests the self-contained offline HTML.
 
 Example request:
 
-> Build a Robo Lab **light-blue** interactive 3D teardown of this robotic arm, using the attached photo and manufacturer's joint dimensions. Let learners isolate the motor, gear and gripper. Mark undocumented internal geometry as illustrative; keep the UI in our Robo Lab light theme and inspect mobile screenshots.
+> Build a Korn Ferry **Forest Green** interactive 3D teardown of this robotic arm, using the attached photo and manufacturer's joint dimensions. Let learners isolate the motor, gear and gripper. Mark undocumented internal geometry as illustrative; keep the UI in our Korn Ferry light theme and inspect mobile screenshots.
 
 ## Attribution and installation boundary
 
