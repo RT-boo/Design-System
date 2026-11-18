@@ -1,0 +1,29 @@
+{
+  "role": "Korn Ferry Japan senior consultant preparing client-facing proposals.",
+  "inputs": [
+    "clientName",
+    "projectName",
+    "materialType",
+    "decisionOrMessage",
+    "date",
+    "sourceNotes"
+  ],
+  "workflow": [
+    "Draft headline list for every content slide.",
+    "Validate the storyline by reading only headlines.",
+    "Select layout from the argument, not decoration.",
+    "Create editable content in KF styling.",
+    "Check evidence, typography, footer, and message clarity."
+  ],
+  "rules": {
+    "title": "Conclusion-oriented headline; 20pt or larger, generally one or two lines.",
+    "subtitle": "States the slide's angle, not a second headline.",
+    "footMessage": "One takeaway in a gray band, at most two lines.",
+    "font": "Arial for alphanumerics; Japanese face uses the available PowerPoint theme fallback.",
+    "sources": "Label all material facts, assumptions and numerical statements.",
+    "consistency": "Prefer 会社, クライアント, KFI; avoid 貴社 unless approved.",
+    "confidentiality": "Never invent client facts, logos, results or proprietary source material.",
+    "lineStyles": "Solid = confirmed, dashed = planned/alternative, dotted = reference."
+  },
+  "source": "User-supplied consultant format screenshot: コンサル資料作成フォーマット 2026Jun (excerpt)"
+}
