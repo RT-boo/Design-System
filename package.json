@@ -1,54 +1,16 @@
 {
-  "name": "@robo-coop/design-system",
-  "version": "0.3.0",
+  "name": "@rt-boo/kf-style",
+  "version": "1.0.0",
   "private": true,
-  "description": "Robo Co-op design system plus an AI-ready presentation OS and editable PPTX generator.",
-  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
-  "sideEffects": [
-    "*.css"
-  ],
-  "exports": {
-    ".": "./dist/tokens.js",
-    "./tokens.json": "./dist/tokens.json",
-    "./css": "./dist/css/robo-design-system.css",
-    "./css/tokens": "./dist/css/tokens.css",
-    "./css/fonts": "./dist/css/fonts.css",
-    "./assets/*": "./assets/*"
-  },
-  "files": [
-    "dist",
-    "assets",
-    "tokens",
-    "src",
-    "slides",
-    "taste",
-    "qa",
-    "generator",
-    "contracts",
-    "AGENTS.md",
-    "visual-systems",
-    "skills"
-  ],
+  "description": "Korn Ferry-inspired slide and UI design system",
   "scripts": {
-    "assets": "node scripts/prepare-assets.mjs",
-    "tokens": "node scripts/build-tokens.mjs",
-    "bundle": "node scripts/bundle-css.mjs",
-    "build": "npm run tokens && npm run bundle",
-    "check:contrast": "node scripts/check-contrast.mjs",
-    "test": "npm run build && npm run check:contrast && npm run slides:contracts:check && npm run slides:qa && npm run 3d:test",
-    "docs": "node scripts/build-docs.mjs",
-    "start": "npm run build && npm run docs && node scripts/serve.mjs",
-    "slides:contracts": "node scripts/build-agents.mjs",
-    "slides:contracts:check": "node scripts/build-agents.mjs --check",
-    "slides:qa": "node generator/qa-deck.mjs generator/examples/ai-demo-deck.json",
-    "slides:build:example": "node generator/render-deck.mjs generator/examples/ai-demo-deck.json generator/output/ai-demo-deck.pptx",
-    "slides:gallery": "node generator/build-gallery.mjs",
-    "slides:visual": "bash grade/render-gallery.sh",
-    "3d:themes:test": "node --test skills/robo-3d-teardown/scripts/export-theme.test.mjs",
-    "3d:test": "node --test skills/robo-3d-teardown/scripts/*.test.mjs skills/robo-3d-teardown/demo/model.test.mjs",
-    "3d:build": "node skills/robo-3d-teardown/scripts/build-demo.mjs",
-    "3d:qa": "node skills/robo-3d-teardown/scripts/qa-demo.mjs"
+    "slides:qa": "node generator/qa-deck.mjs generator/examples/kf-proposal.json",
+    "slides:build:example": "node generator/render-deck.mjs generator/examples/kf-proposal.json generator/output/kf-proposal.pptx",
+    "slides:gallery": "node generator/gallery.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check": "npm test && npm run slides:qa",
+    "build": "npm run slides:build:example"
   },
   "dependencies": {
     "pptxgenjs": "4.0.1"

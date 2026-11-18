@@ -1,121 +1,36 @@
-# Robo Design System — Presentation OS
+# Korn Ferry Style — Consulting Presentation System
 
-Robo Co-op's design-system source of truth, extended into a machine-readable, testable presentation system.
+This is a **complete Korn Ferry-style replacement of the working tree** of the original multi-brand design system. It is focused on editable client-facing PowerPoint slides and a consistent web/CSS visual language. No active Robo-branded themes, assets, demo content, or generators remain in this tree.
 
-## Web and app UI — Robo Frontend Design
+**Status:** independently implemented, public-source brand-inspired approximation, **not** an official internal Korn Ferry template. The wordmark is rendered as editable text because no official logo artwork is bundled. Project history still preserves the original fork; repository metadata may continue to show that relationship.
 
-For websites, landing pages, dashboards and other product interfaces, use the [Robo Frontend Design skill](skills/robo-frontend-design/SKILL.md). It adapts Anthropic's intentional-design and self-critique method to the four Robo brands **without changing canonical tokens, typography or logos**. The existing Robo Lab light-blue web theme remains available; dark slide variants are not web defaults.
+## Defaults
+- 16:9 PowerPoint, white content pages and Dark Forest Green covers.
+- Forest Green `#00634F`, Dark Forest `#053328`.
+- Arial for Latin/number text and Yu Gothic as Japanese fallback.
+- Action-oriented headlines, explicit sources, restrained light green and pink.
+- Gray foot-message band, one message per content slide, two lines maximum.
+- Bottom-left page number / copyright; bottom-right text-only Korn Ferry stand-in.
 
-See [skill usage and QA](skills/README.md). The Presentation OS below remains authoritative for editable decks.
-
-## Interactive 3D — Robo 3D Teardown
-
-For **interactive 3D mechanical explainers, exploded views and training simulations**, use [Robo 3D Teardown](skills/robo-3d-teardown/SKILL.md). It adapts the reference-first workflow of [elvarofficial/teardown](https://github.com/elvarofficial/teardown) to Robo's existing light/dark brand tokens and QA. A pinned upstream runtime is fetched only during optional CI/local builds and bundled into an **offline interactive 3D demo**; the third-party source itself is **not vendored**. Use `npm run 3d:build` and `npm run 3d:qa` with an authorized reviewed upstream checkout (see the [demo README](skills/robo-3d-teardown/demo/README.md)). GitHub Actions uploads the HTML and screenshots.
-
-## Story-first Presentation OS
-
-The Presentation OS now separates **reasoning**, **composition**, **rendering**, and **brand expression**.
-
-1. Frame the audience, decision, evidence boundary, and output.
-2. Write the governing claim and a headline ledger before drawing.
-3. Classify each slide into one of 7 communication intents.
-4. Select one of 48 composition archetypes.
-5. Map the archetype to the closest supported semantic layout.
-6. Apply the selected Robo brand grammar.
-7. Run structural QA, render, and visual QA.
-
-The 48 archetypes are a reasoning/composition registry, not 48 hard-coded PPT templates. This preserves flexibility and backward compatibility while making slide choice more deliberate.
-
-## Brand Visual Systems v1
-
-The four Robo brands now have distinct presentation identities:
-
-- **Robo Co-op** — Human ⇄ Machine cooperation, synchronization, governance
-- **Robo Lab** — systems, experiments, traces; optional measured cyberpunk
-- **Co-op Lab** — cooperative entrepreneurship, ownership, constructive rebellion
-- **Robo University** — exploration, learning paths, checkpoints, continuous updating
-
-Each brand has **Core + Expressive** presentation modes.
-
-## Active variants
-
-- `robo-coop-core`
-- `robo-coop-dark`
-- `robo-lab-core`
-- `robo-lab-cyber`
-- `coop-lab-core`
-- `coop-lab-hack`
-- `robo-university-core`
-- `robo-university-explore`
-
-Legacy names remain aliases for compatibility, but new decks should use the brand-owned names.
-
-## Architecture
-
-```
-audience / decision / evidence
-    ↓
-governing claim
-    ↓
-headline ledger / storyline
-    ↓
-7 communication intents
-    ↓
-48 composition archetypes
-    ↓
-7 semantic renderer layouts
-    ↓
-brand-owned variant
-    ↓
-editable PowerPoint
-    ↓
-rendered PNG gallery
-    ↓
-structural + visual QA
-```
-
-Machine-readable sources:
-- `contracts/storytelling.json` — story-first workflow, headline/evidence rules, visual semantics, QA
-- `contracts/archetypes.json` — 7 intents + 48 composition archetypes and renderer hints
-- `contracts/brands.json`
-- `contracts/layouts.json`
-- `contracts/components.json`
-- `contracts/variants.json`
-
-`AGENTS.md` is generated from these contracts.
-
-### Optional slide metadata
-
-Existing deck JSON remains valid. New decks may add:
-
-```json
-{
-  "type": "comparison",
-  "intent": "change",
-  "archetype": "20",
-  "title": "The redesigned flow removes two handoffs without changing ownership"
-}
-```
-
-`intent` and `archetype` are validated when present. `type` remains the rendering contract.
-
-## Visual regression
-
-8 variants × 7 semantic layouts = **56 rendered regression cases**.
-
-See [Brand Visual Systems](visual-systems/README.md).
-
-## Commands
+## Usage
 
 ```bash
 npm install
-npm run slides:contracts:check
-npm run slides:qa
+npm run check
 npm run slides:build:example
 npm run slides:gallery
-npm run slides:visual
 ```
 
-## License
+An editable PPTX example is written to `generator/output/kf-proposal.pptx`. To use your own deck, edit `generator/examples/kf-proposal.json`, then run:
 
-Robo Co-op logos, wordmarks, brand colours and related brand assets remain proprietary. Public repository visibility does **not** grant permission to reproduce or redistribute Robo Co-op brand assets outside authorized Robo Co-op use. See `LICENSE`.
+```bash
+node generator/qa-deck.mjs my-deck.json
+node generator/render-deck.mjs my-deck.json my-deck.pptx
+```
+
+The code renders 15 layouts: cover, agenda, text, comparison, matrix, group table, schedule, costs, team, appendix, reference, statement, metrics, process and architecture. Layout and brand contracts live in `contracts/`; web CSS in `src/css/`.
+
+## Source & limitations
+See `SOURCES.md` and `STYLE_GUIDE.md`. Screenshot-derived rules are user-supplied. Colors and Arial are also supported by official publicly reachable brand guidance. The additional light-green/gray/pink tones and exact positioning are implementation approximations. This is **not** a substitute for a licensed internal template or official logo assets.
+
+Do not put client-confidential details or internal files in a public repository. Check the repository's visibility before committing live project content.

@@ -1,0 +1,7 @@
+:root {
+ --kf-forest:#00634F; --kf-dark-forest:#053328; --kf-light-green:#E7F0E4;
+ --kf-gray-band:#F1F2F1; --kf-pink:#F5E7E9; --kf-border:#D9E1DC;
+ --kf-text:#26352F; --kf-muted:#576A63; --kf-white:#FFFFFF;
+ --kf-font-latin:Arial,Helvetica,sans-serif;
+ --kf-font-japanese:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+}
