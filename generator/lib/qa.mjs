@@ -31,7 +31,7 @@ export function validateDeck(deck){
  if(!deck?.meta?.brand)errors.push("meta.brand is required.");
  if(!Array.isArray(deck?.slides)||deck.slides.length===0)errors.push("slides must contain at least one slide.");
  if(errors.length)return {errors,warnings};
- const preset=deck.meta.preset||"robo-lab-core",resolved=resolveVariant(preset);
+ const preset=deck.meta.preset||"kf-core",resolved=resolveVariant(preset);
  if(!resolved.variant)errors.push(`meta.preset "${preset}" is not defined in contracts/variants.json.`);
  else{if(resolved.deprecated)warnings.push(`meta.preset "${preset}" is a deprecated alias; use "${resolved.canonical}".`);if(resolved.variant.brand!==deck.meta.brand)errors.push(`meta.brand "${deck.meta.brand}" does not match variant "${resolved.canonical}" (brand: ${resolved.variant.brand}).`);}
  const titles=new Map();let repeatedType=null,repeatedCount=0;
@@ -64,6 +64,9 @@ export function validateDeck(deck){
   if(/\b(TODO|TBD|LOREM)\b/i.test(JSON.stringify(slide)))warnings.push(`Slide ${n}: contains placeholder text.`);
   if(slide.type===repeatedType)repeatedCount+=1;else{repeatedType=slide.type;repeatedCount=1;}
   if(repeatedCount===3)warnings.push(`Slide ${n}: layout "${slide.type}" appears three times in a row; check composition variety.`);
+  if (slide.footMessage != null) {
+    if (typeof slide.footMessage !== "string" || slide.footMessage.split("\\n").length > 2 || slide.footMessage.length > 100) errors.push(`Slide ${n}: footMessage must be text within two lines / 100 characters.`);
+  }
  });
  if(deck.slides[0]?.type!=="cover")warnings.push("First slide is not a cover.");
  return {errors,warnings};
