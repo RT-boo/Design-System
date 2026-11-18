@@ -1,11 +1,11 @@
 {
   "$meta": {
-    "name": "Robo Slide Intent and Archetype Registry",
+    "name": "Korn Ferry Slide Intent and Archetype Registry",
     "version": "1.0.0",
     "description": "A strategy layer above semantic layouts. Archetypes guide composition; slide.type remains the renderer contract.",
     "sourceInspiration": "https://note.com/uchita_success/n/na5babdc58b0e",
     "compatibility": "Archetype IDs are optional metadata so existing deck JSON remains valid.",
-    "adaptation": "Robo-native registry inspired by the article's seven-purpose / 48-pattern method. Labels and renderer mappings are adapted to Robo Presentation OS and are not a verbatim transcription of the source."
+    "adaptation": "Korn Ferry-focused intent and composition registry, preserving the original seven intents and 48 archetypes."
   },
   "intents": [
     {
