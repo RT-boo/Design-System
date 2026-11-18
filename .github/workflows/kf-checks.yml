@@ -1,0 +1,26 @@
+name: KF Style checks
+on:
+  push:
+    branches: ["feature/kf-full-migration"]
+  pull_request:
+    paths:
+      - "generator/**"
+      - "contracts/**"
+      - "test/**"
+      - "package.json"
+      - ".github/workflows/kf-checks.yml"
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - run: npm run check
+      - run: npm run slides:build:example
+      - name: Inspect generated PPTX
+        run: |
+          test -s generator/output/kf-proposal.pptx
+          unzip -t generator/output/kf-proposal.pptx >/dev/null
